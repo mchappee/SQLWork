@@ -1,3 +1,12 @@
+
+Below is the original README that I'll leave for posterity.  SQLWork is an
+application that I wrote long, long ago to fill a need for a graphical, full-featured
+SQL executor with features such as explain plan, table-based output/editing, exporting,
+saving, etc.  I recently got it compiled and running on centos 8.4, which was
+kinda cool:
+
+
+
 SQLWork is a visual SQL (Structured Query Language) input and retrieval
 program. It is useful for both DBAs and database developers. Query Results can
 be displayed in plain text or in grid form and (where supported by the
