@@ -1,0 +1,3 @@
+#!/bin/sh
+
+LD_PRELOAD=`pwd`/ocitrace.so $ORACLE_HOME/bin/sqlplus "$@"

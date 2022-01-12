@@ -1,0 +1,3289 @@
+set $OCIHandleTypes = {(char *)"", (char *)"HTYPE_ENV", (char *)"HTYPE_ERROR", (char *)"HTYPE_SVCCTX", (char *)"HTYPE_STMT", (char *)"HTYPE_BIND", (char *)"HTYPE_DEFINE", (char *)"HTYPE_DESCRIBE", (char *)"HTYPE_SERVER", (char *)"HTYPE_SESSION", (char *)"HTYPE_TRANS", (char *)"HTYPE_COMPLEXOBJECT", (char *)"HTYPE_SECURITY", (char *)"HTYPE_SUBSCRIPTION", (char *)"HTYPE_DIRPATH_CTX", (char *)"HTYPE_DIRPATH_COLUMN_ARRAY", (char *)"HTYPE_DIRPATH_STREAM", (char *)"HTYPE_PROC"}
+set $OCIDescrTypes =  {(char *)"DTYPE_LOB", (char *)"DTYPE_SNAP", (char *)"DTYPE_RSET", (char *)"DTYPE_PARAM", (char *)"DTYPE_ROWID", (char *)"DTYPE_COMPLEXOBJECTCOMP", (char *)"DTYPE_FILE", (char *)"DTYPE_AQENQ_OPTIONS", (char *)"DTYPE_AQDEQ_OPTIONS", (char *)"DTYPE_AQMSG_PROPERTIES", (char *)"DTYPE_AQAGENT", (char *)"DTYPE_LOCATOR", (char *)"DTYPE_DATETIME", (char *)"DTYPE_INTERVAL", (char *)"DTYPE_AQNFY_DESCRIPTOR"}
+set $OCIAttrs =       {(char *)"", (char *)"FNCODE", (char *)"OBJECT", (char *)"NONBLOCKING_MODE", (char *)"SQLCODE", (char *)"ENV", (char *)"SERVER", (char *)"SESSION", (char *)"TRANS", (char *)"ROW_COUNT", (char *)"SQLFNCODE", (char *)"PREFETCH_ROWS", (char *)"NESTED_PREFETCH_ROWS", (char *)"PREFETCH_MEMORY", (char *)"NESTED_PREFETCH_MEMORY", (char *)"CHAR_COUNT", (char *)"PDSCL", (char *)"PDPRC", (char *)"PARAM_COUNT", (char *)"ROWID", (char *)"CHARSET", (char *)"NCHAR", (char *)"USERNAME", (char *)"PASSWORD", (char *)"STMT_TYPE", (char *)"INTERNAL_NAME", (char *)"EXTERNAL_NAME", (char *)"XID", (char *)"TRANS_LOCK", (char *)"TRANS_NAME", (char *)"HEAPALLOC", (char *)"CHARSET_ID", (char *)"CHARSET_FORM", (char *)"MAXDATA_SIZE", (char *)"CACHE_OPT_SIZE", (char *)"CACHE_MAX_SIZE", (char *)"PINOPTION", (char *)"ALLOC_DURATION", (char *)"PIN_DURATION", (char *)"FDO", (char *)"POSTPROCESSING_CALLBACK", (char *)"POSTPROCESSING_CONTEXT", (char *)"ROWS_RETURNED", (char *)"FOCBK", (char *)"IN_V_MODE", (char *)"LOBEMPTY", (char *)"SESSLANG", (char *)"VISIBILITY", (char *)"RELATIVE_MSGID", (char *)"SEQUENCE_DEVIATION", (char *)"CONSUMER_NAME", (char *)"DEQ_MODE", (char *)"NAVIGATION", (char *)"WAIT", (char *)"DEQ_MSGID", (char *)"PRIORITY", (char *)"DELAY", (char *)"EXPIRATION", (char *)"CORRELATION", (char *)"ATTEMPTS", (char *)"RECIPIENT_LIST", (char *)"EXCEPTION_QUEUE", (char *)"ENQ_TIME", (char *)"MSG_STATE", (char *)"AGENT_NAME", (char *)"AGENT_ADDRESS", (char *)"AGENT_PROTOCOL", (char *)"INVALID", (char *)"SENDER_ID", (char *)"ORIGINAL_MSGID", (char *)"QUEUE_NAME", (char *)"NFY_MSGID", (char *)"MSG_PROP", (char *)"NUM_DML_ERRORS", (char *)"DML_ROW_OFFSET", (char *)"DATEFORMAT", (char *)"BUF_ADDR", (char *)"BUF_SIZE", (char *)"DIRPATH_MODE", (char *)"DIRPATH_NOLOG", (char *)"DIRPATH_PARALLEL", (char *)"NUM_ROWS", (char *)"COL_COUNT", (char *)"STREAM_OFFSET", (char *)"SHARED_HEAPALLOC", (char *)"SERVER_GROUP", (char *)"MIGSESSION", (char *)"NOCACHE", (char *)"MEMPOOL_SIZE", (char *)"MEMPOOL_INSTNAME", (char *)"MEMPOOL_APPNAME", (char *)"MEMPOOL_HOMENAME", (char *)"MEMPOOL_MODEL", (char *)"MODES", (char *)"SUBSCR_NAME", (char *)"SUBSCR_CALLBACK", (char *)"SUBSCR_CTX", (char *)"SUBSCR_PAYLOAD", (char *)"SUBSCR_NAMESPACE", (char *)"PROXY_CREDENTIALS", (char *)"INITIAL_CLIENT_ROLES", (char *)"UNK", (char *)"NUM_COLS", (char *)"LIST_COLUMNS", (char *)"RDBA", (char *)"CLUSTERED", (char *)"PARTITIONED", (char *)"INDEX_ONLY", (char *)"LIST_ARGUMENTS", (char *)"LIST_SUBPROGRAMS", (char *)"REF_TDO", (char *)"LINK", (char *)"MIN", (char *)"MAX", (char *)"INCR", (char *)"CACHE", (char *)"ORDER", (char *)"HW_MARK", (char *)"TYPE_SCHEMA", (char *)"TIMESTAMP", (char *)"NUM_ATTRS", (char *)"NUM_PARAMS", (char *)"OBJID", (char *)"PTYPE", (char *)"PARAM", (char *)"OVERLOAD_ID", (char *)"TABLESPACE", (char *)"TDO", (char *)"LTYPE", (char *)"PARSE_ERROR_OFFSET", (char *)"IS_TEMPORARY", (char *)"IS_TYPED", (char *)"DURATION", (char *)"IS_INVOKER_RIGHTS", (char *)"OBJ_NAME", (char *)"OBJ_SCHEMA", (char *)"OBJ_ID"}
+set $OCICreds =       {(char *)"", (char *)"RDBMS", (char *)"EXT", (char *)"PROXY"}
+set $SQLTTypes =      {(char *)"", (char *)"SQLT_CHR", (char *)"SQLT_NUM", (char *)"SQLT_INT", (char *)"SQLT_FLT", (char *)"SQLT_STR", (char *)"SQLT_VNU", (char *)"SQLT_PDN", (char *)"SQLT_LNG", (char *)"SQLT_VCS", (char *)"SQLT_NON", (char *)"SQLT_RID", (char *)"SQLT_DAT", (char *)"INVALID(13)", (char *)"INVALID(14)", (char *)"SQLT_VBI", (char *)"INVALID(16)", (char *)"INVALID(17)", (char *)"INVALID(18)", (char *)"INVALID(19)", (char *)"INVALID(20)", (char *)"INVALID(21)", (char *)"INVALID(22)", (char *)"SQLT_BIN", (char *)"SQLT_LBI", (char *)"INVALID(25)", (char *)"INVALID(26)", (char *)"INVALID(27)", (char *)"INVALID(28)", (char *)"INVALID(29)", (char *)"INVALID(30)", (char *)"INVALID(31)", (char *)"INVALID(32)", (char *)"INVALID(33)", (char *)"INVALID(34)", (char *)"INVALID(35)", (char *)"INVALID(36)", (char *)"INVALID(37)", (char *)"INVALID(38)", (char *)"INVALID(39)", (char *)"INVALID(40)", (char *)"INVALID(41)", (char *)"INVALID(42)", (char *)"INVALID(43)", (char *)"INVALID(44)", (char *)"INVALID(45)", (char *)"INVALID(46)", (char *)"INVALID(47)", (char *)"INVALID(48)", (char *)"INVALID(49)", (char *)"INVALID(50)", (char *)"INVALID(51)", (char *)"INVALID(52)", (char *)"INVALID(53)", (char *)"INVALID(54)", (char *)"INVALID(55)", (char *)"INVALID(56)", (char *)"INVALID(57)", (char *)"INVALID(58)", (char *)"INVALID(59)", (char *)"INVALID(60)", (char *)"INVALID(61)", (char *)"INVALID(62)", (char *)"INVALID(63)", (char *)"INVALID(64)", (char *)"INVALID(65)", (char *)"INVALID(66)", (char *)"INVALID(67)", (char *)"SQLT_UIN", (char *)"INVALID(69)", (char *)"INVALID(70)", (char *)"INVALID(71)", (char *)"INVALID(72)", (char *)"INVALID(73)", (char *)"INVALID(74)", (char *)"INVALID(75)", (char *)"INVALID(76)", (char *)"INVALID(77)", (char *)"INVALID(78)", (char *)"INVALID(79)", (char *)"INVALID(80)", (char *)"INVALID(81)", (char *)"INVALID(82)", (char *)"INVALID(83)", (char *)"INVALID(84)", (char *)"INVALID(85)", (char *)"INVALID(86)", (char *)"INVALID(87)", (char *)"INVALID(88)", (char *)"INVALID(89)", (char *)"INVALID(90)", (char *)"SQLT_SLS", (char *)"INVALID(92)", (char *)"INVALID(93)", (char *)"SQLT_LVC", (char *)"SQLT_LVB", (char *)"SQLT_AFC", (char *)"SQLT_AVC", (char *)"INVALID(98)", (char *)"INVALID(99)", (char *)"INVALID(100)", (char *)"INVALID(101)", (char *)"SQLT_CUR", (char *)"INVALID(103)", (char *)"SQLT_RDD", (char *)"SQLT_LAB", (char *)"SQLT_OSL", (char *)"INVALID(107)", (char *)"SQLT_NTY", (char *)"INVALID(109)", (char *)"SQLT_REF", (char *)"INVALID(111)", (char *)"SQLT_CLOB", (char *)"SQLT_BLOB", (char *)"SQLT_BFILEE", (char *)"SQLT_CFILEE", (char *)"SQLT_RSET", (char *)"INVALID(117)", (char *)"INVALID(118)", (char *)"INVALID(119)", (char *)"INVALID(121)", (char *)"INVALID(121)", (char *)"SQLT_NCO", (char *)"INVALID(123)", (char *)"INVALID(124)", (char *)"INVALID(125)", (char *)"INVALID(126)", (char *)"INVALID(127)", (char *)"INVALID(128)", (char *)"INVALID(129)", (char *)"INVALID(130)", (char *)"INVALID(131)", (char *)"INVALID(132)", (char *)"INVALID(133)", (char *)"INVALID(134)", (char *)"INVALID(135)", (char *)"INVALID(136)", (char *)"INVALID(137)", (char *)"INVALID(138)", (char *)"INVALID(139)", (char *)"INVALID(140)", (char *)"INVALID(141)", (char *)"INVALID(142)", (char *)"INVALID(143)", (char *)"INVALID(144)", (char *)"INVALID(145)", (char *)"INVALID(146)", (char *)"INVALID(147)", (char *)"INVALID(148)", (char *)"INVALID(149)", (char *)"INVALID(150)", (char *)"INVALID(151)", (char *)"INVALID(152)", (char *)"INVALID(153)", (char *)"INVALID(154)", (char *)"SQLT_VST  155                                      /* OCIString type */", (char *)"SQLT_ODT  156                                        /* OCIDate type */", (char *)"INVALID(157)", (char *)"INVALID(158)", (char *)"INVALID(159)", (char *)"INVALID(160)", (char *)"INVALID(161)", (char *)"INVALID(162)", (char *)"INVALID(163)", (char *)"INVALID(164)", (char *)"INVALID(165)", (char *)"INVALID(166)", (char *)"INVALID(167)", (char *)"INVALID(168)", (char *)"INVALID(169)", (char *)"INVALID(170)", (char *)"INVALID(171)", (char *)"INVALID(172)", (char *)"INVALID(173)", (char *)"INVALID(174)", (char *)"INVALID(175)", (char *)"INVALID(176)", (char *)"INVALID(177)", (char *)"INVALID(178)", (char *)"INVALID(179)", (char *)"INVALID(180)", (char *)"INVALID(181)", (char *)"INVALID(182)", (char *)"INVALID(183)", (char *)"SQLT_DATE", (char *)"SQLT_TIME", (char *)"SQLT_TIME_TZ", (char *)"SQLT_TIMESTAMP", (char *)"SQLT_TIMESTAMP_TZ", (char *)"SQLT_INTERVAL_YM", (char *)"SQLT_INTERVAL_DS"}
+
+b OCIInitialize
+  commands
+  silent
+  printf "OCIInitialize: mode=("
+  set $OCIInitMode=*(int *)($ebp+0x8)
+  if ($OCIInitMode == 0)
+    printf "OCI_DEFAULT"
+  else
+    printf "%s%s%s%s%s%s", ($OCIInitMode & 0x01) ? "OCI_THREADED " : "", ($OCIInitMode & 0x02) ? "OCI_OBJECT " : "", ($OCIInitMode & 0x04) ? "OCI_EVENTS " : "", ($OCIInitMode & 0x10) ? "OCI_SHARED " : "", ($OCIInitMode & 0x40) ? "OCI_NO_UCB " : "", ($OCIInitMode & 0x80) ? "OCI_NO_MUTEX " : ""
+  end
+  printf ")\n               ctxp = 0x%08x\n", *(void **)($ebp+0xc)
+  printf "                  malocfp = 0x%08x\n", *(void **)($ebp+0x10)
+  printf "                  ralocfp = 0x%08x\n", *(void **)($ebp+0x14)
+  printf "                  mfreefp = 0x%08x\n", *(void **)($ebp+0x18)
+  cont
+end
+
+b OCISessionBegin
+  commands
+  silent
+  printf "OCISessionBegin: svchp = 0x%08x\n", *(void **)($ebp+0x8)
+  printf "                 errhp = 0x%08x", *(void **)($ebp+0xc)
+  printf "                 usrhp = 0x%08x", *(void **)($ebp+0x10)
+  printf "                 cred = OCI_CRED_%s", $OCICreds[*(int *)($ebp+0x14)]
+  printf "                 mode=("
+  set $OCISessMode=*(int *)($ebp+0x8)
+  if ($OCISessMode == 0)
+    printf "OCI_DEFAULT"
+  else
+    printf "%s%s%s%s)\n", ($OCISessMode & 0x01) ? "OCI_MIGRATE " : "", ($OCISessMode & 0x02) ? "OCI_SYSDBA " : "", ($OCISessMode & 0x04) ? "OCI_SYSOPER " : "", ($OCISessMode & 0x08) ? "OCI_PRELIM_AUTH " : ""
+  end
+  cont
+end
+
+b OCIServerAttach
+  commands
+  silent
+  printf "OCIServerAttach: srvhp = 0x%08x\n", *(void **)($ebp+0x8)
+  printf "                 db_link = %s\n", *(char **)($ebp+0x10)
+  cont
+end
+
+b OCIServerDetach
+  commands
+  silent
+  printf "OCIServerDetach: srvhp = 0x%08x\n", *(void **)($ebp+0x8)
+  cont
+end
+
+b OCIEnvInit
+commands
+  silent
+  set $OCIEnvInitMode=*(int *)($ebp+0xc)
+  printf "OCIEnvInit: envhpp = 0x%08x mode=(", *(void **)($ebp+8)
+  if ($OCIEnvInitMode == 0)
+    printf "OCI_DEFAULT"
+  else
+    printf "%s %s", ($OCIEnvInitMode & 0x01) ? "OCI_ENV_NO_UCB", ($OCIEnvInitMode & 0x08) ? "OCI_ENV_NO_MUTEX"
+  end
+  printf ") xtramemsz=%d usrmempp = 0x%08x\n", *(int *)($ebp+0x10), *(void **)($ebp+0x14)
+  cont
+end
+
+b *(&OCIEnvInit+22)
+  commands
+  silent
+  printf "            allocated env = 0x%08x allocated mem = 0x%08x\n", **(void ***)($ebp+8), *(void **)($ebp+0x14) ? **(void ***)($ebp+0x14) : 0
+  cont
+end
+
+b OCIHandleAlloc
+  commands
+  silent
+  printf "OCIHandleAlloc: parenth = 0x%08x", *(void **)($ebp+0x8)
+  printf " type = OCI_%s", $OCIHandleTypes[*(int *)($ebp+0x10)]
+  printf " xtramemsz=%d usrmempp = 0x%08x\n", *(int *)($ebp+0x14), *(void **)($ebp+0x18)
+  cont
+end
+
+b *(&OCIHandleAlloc+53)
+  commands
+  silent
+  printf "                allocated handle = 0x%08x", **(void ***)($ebp+0xc)
+  printf " allocated mem = 0x%08x\n", *(void **)($ebp+0x18) ? **(void ***)($ebp+0x18) : 0
+  cont
+end
+
+b OCIHandleFree
+  commands
+  silent
+  printf "OCIHandleFree handle = OCI_%s", *(int *)($ebp+0xc) >= 50 ? $OCIDescrTypes[(*(int *)($ebp+0xc))-50] : $OCIHandleTypes[*(int *)($ebp+0xc)]
+  printf "@0x%08x\n", *(void **)($ebp+0x8)
+  cont
+end
+
+b OCIAttrSet
+  commands
+  silent
+  printf "OCIAttrSet handle = OCI_%s", *(int *)($ebp+0xc) >= 50 ? $OCIDescrTypes[(*(int *)($ebp+0xc))-50] : $OCIHandleTypes[*(int *)($ebp+0xc)]
+  printf "@0x%08x", *(void **)($ebp+0x8)
+  printf " attribute type = OCI_ATTR_%s\n", $OCIAttrs[*(int *)($ebp+0x18)]
+  cont
+end
+
+b OCIAttrGet
+  commands
+  silent
+  printf "OCIAttrGet handle = OCI_%s", *(int *)($ebp+0xc) >= 50 ? $OCIDescrTypes[(*(int *)($ebp+0xc))-50] : $OCIHandleTypes[*(int *)($ebp+0xc)]
+  printf "@0x%08x", *(void **)($ebp+0x8)
+  printf " attribute type = OCI_ATTR_%s\n", $OCIAttrs[*(int *)($ebp+0x18)]
+  cont
+end
+
+b OCIStmtPrepare
+  commands
+  silent
+  printf "OCIStmtPrepare: handle = 0x%08x\n", *(void **)($ebp+0x8)
+  printf "                stmt = %s\n", *(char **)($ebp+0x10)
+  cont
+end
+
+b OCIDefineByPos
+  commands
+  silent
+  printf "OCIDefineByPos: stmtp = 0x%08x\n", *(void **)($ebp+0x8)
+  printf "                defnpp = 0x%08x@0x%08x\n", **(void ***)($ebp+0xc), *(void **)($ebp+0xc)
+  set $OCIDefineByPosDefnPP = **(void ***)($ebp+0xc)
+  printf "                position = %d\n", *(int *)($ebp+0x14)
+  printf "                valuep = 0x%08x\n", *(void **)($ebp+0x18)
+  printf "                value_sz = %lu\n", *(unsigned int *)($ebp+0x1c)
+  printf "                dty = %s\n", $SQLTTypes[*(short *)($ebp+0x20)]
+  cont
+end
+
+b *(&OCIDefineByPos+43)
+  commands
+  silent
+  if ($OCIDefineByPosDefnPP == 0)
+    printf "                allocated define handle = 0x%08x\n", **(void ***)($ebp+0xc)
+  end
+  cont
+end
+
+# Needs work
+b OCITypeByName
+  commands
+  silent
+  printf "OCITypeByName: schema_name = %s\n", *(char **)($ebp+0x14)
+  printf "               type_name = %s\n", *(char **)($ebp+0x1c)
+  cont
+end
+
+b OCITypeName
+  commands
+  silent
+  printf "OCITypeName: tdo = 0x%08x\n", *(char **)($ebp+0x10)
+  cont
+end
+
+b *(&OCITypeName+268)
+  commands
+  silent
+  printf "             name(ret) = %s\n", (char *)$eax
+  cont
+end
+
+b OCITypeElemName
+  commands
+  silent
+  printf "OCITypeElemName: elem = 0x%08x\n", *(char **)($ebp+0x10)
+  cont
+end
+
+b *(&OCITypeElemName+263)
+  commands
+  silent
+  printf "             name(ret) = %s\n", (char *)$eax
+  cont
+end
+
+b OCIAQDeq
+commands
+silent
+printf "OCIAQDeq called\n"
+cont
+end
+b OCIAQEnq
+commands
+silent
+printf "OCIAQEnq called\n"
+cont
+end
+b OCIAQListen
+commands
+silent
+printf "OCIAQListen called\n"
+cont
+end
+b OCIBindArrayOfStruct
+commands
+silent
+printf "OCIBindArrayOfStruct called\n"
+cont
+end
+b OCIBindByName
+commands
+silent
+printf "OCIBindByName called\n"
+cont
+end
+b OCIBindByPos
+commands
+silent
+printf "OCIBindByPos called\n"
+cont
+end
+b OCIBindDynamic
+commands
+silent
+printf "OCIBindDynamic called\n"
+cont
+end
+b OCIBindObject
+commands
+silent
+printf "OCIBindObject called\n"
+cont
+end
+b OCIBreak
+commands
+silent
+printf "OCIBreak called\n"
+cont
+end
+b OCICacheFlush
+commands
+silent
+printf "OCICacheFlush called\n"
+cont
+end
+b OCICacheFlushRefresh
+commands
+silent
+printf "OCICacheFlushRefresh called\n"
+cont
+end
+b OCICacheFree
+commands
+silent
+printf "OCICacheFree called\n"
+cont
+end
+b OCICacheGetObjects
+commands
+silent
+printf "OCICacheGetObjects called\n"
+cont
+end
+b OCICacheRefresh
+commands
+silent
+printf "OCICacheRefresh called\n"
+cont
+end
+b OCICacheRegister
+commands
+silent
+printf "OCICacheRegister called\n"
+cont
+end
+b OCICacheUnmark
+commands
+silent
+printf "OCICacheUnmark called\n"
+cont
+end
+b OCICacheUnpin
+commands
+silent
+printf "OCICacheUnpin called\n"
+cont
+end
+b OCICharSetConversionIsReplacementUsed
+commands
+silent
+printf "OCICharSetConversionIsReplacementUsed called\n"
+cont
+end
+b OCICharSetToUnicode
+commands
+silent
+printf "OCICharSetToUnicode called\n"
+cont
+end
+b OCICollAppend
+commands
+silent
+printf "OCICollAppend called\n"
+cont
+end
+b OCICollAssign
+commands
+silent
+printf "OCICollAssign called\n"
+cont
+end
+b OCICollAssignElem
+commands
+silent
+printf "OCICollAssignElem called\n"
+cont
+end
+b OCICollGetElem
+commands
+silent
+printf "OCICollGetElem called\n"
+cont
+end
+b OCICollIsLocator
+commands
+silent
+printf "OCICollIsLocator called\n"
+cont
+end
+b OCICollMax
+commands
+silent
+printf "OCICollMax called\n"
+cont
+end
+b OCICollSize
+commands
+silent
+printf "OCICollSize called\n"
+cont
+end
+b OCICollTrim
+commands
+silent
+printf "OCICollTrim called\n"
+cont
+end
+b OCIContextClearValue
+commands
+silent
+printf "OCIContextClearValue called\n"
+cont
+end
+b OCIContextGenerateKey
+commands
+silent
+printf "OCIContextGenerateKey called\n"
+cont
+end
+b OCIContextGetValue
+commands
+silent
+printf "OCIContextGetValue called\n"
+cont
+end
+b OCIContextSetValue
+commands
+silent
+printf "OCIContextSetValue called\n"
+cont
+end
+b OCIDateAddDays
+commands
+silent
+printf "OCIDateAddDays called\n"
+cont
+end
+b OCIDateAddMonths
+commands
+silent
+printf "OCIDateAddMonths called\n"
+cont
+end
+b OCIDateAssign
+commands
+silent
+printf "OCIDateAssign called\n"
+cont
+end
+b OCIDateCheck
+commands
+silent
+printf "OCIDateCheck called\n"
+cont
+end
+b OCIDateCompare
+commands
+silent
+printf "OCIDateCompare called\n"
+cont
+end
+b OCIDateDaysBetween
+commands
+silent
+printf "OCIDateDaysBetween called\n"
+cont
+end
+b OCIDateFromText
+commands
+silent
+printf "OCIDateFromText called\n"
+cont
+end
+b OCIDateLastDay
+commands
+silent
+printf "OCIDateLastDay called\n"
+cont
+end
+b OCIDateNextDay
+commands
+silent
+printf "OCIDateNextDay called\n"
+cont
+end
+b OCIDateSysDate
+commands
+silent
+printf "OCIDateSysDate called\n"
+cont
+end
+b OCIDateTimeAssign
+commands
+silent
+printf "OCIDateTimeAssign called\n"
+cont
+end
+b OCIDateTimeCheck
+commands
+silent
+printf "OCIDateTimeCheck called\n"
+cont
+end
+b OCIDateTimeCompare
+commands
+silent
+printf "OCIDateTimeCompare called\n"
+cont
+end
+b OCIDateTimeConvert
+commands
+silent
+printf "OCIDateTimeConvert called\n"
+cont
+end
+b OCIDateTimeFromText
+commands
+silent
+printf "OCIDateTimeFromText called\n"
+cont
+end
+b OCIDateTimeGetDate
+commands
+silent
+printf "OCIDateTimeGetDate called\n"
+cont
+end
+b OCIDateTimeGetTime
+commands
+silent
+printf "OCIDateTimeGetTime called\n"
+cont
+end
+b OCIDateTimeGetTimeZone
+commands
+silent
+printf "OCIDateTimeGetTimeZone called\n"
+cont
+end
+b OCIDateTimeIntervalAdd
+commands
+silent
+printf "OCIDateTimeIntervalAdd called\n"
+cont
+end
+b OCIDateTimeIntervalSub
+commands
+silent
+printf "OCIDateTimeIntervalSub called\n"
+cont
+end
+b OCIDateTimeSetDate
+commands
+silent
+printf "OCIDateTimeSetDate called\n"
+cont
+end
+b OCIDateTimeSetTime
+commands
+silent
+printf "OCIDateTimeSetTime called\n"
+cont
+end
+b OCIDateTimeSetTimeZone
+commands
+silent
+printf "OCIDateTimeSetTimeZone called\n"
+cont
+end
+b OCIDateTimeSubtract
+commands
+silent
+printf "OCIDateTimeSubtract called\n"
+cont
+end
+b OCIDateTimeSysTimeStamp
+commands
+silent
+printf "OCIDateTimeSysTimeStamp called\n"
+cont
+end
+b OCIDateTimeToText
+commands
+silent
+printf "OCIDateTimeToText called\n"
+cont
+end
+b OCIDateToText
+commands
+silent
+printf "OCIDateToText called\n"
+cont
+end
+b OCIDateZoneToZone
+commands
+silent
+printf "OCIDateZoneToZone called\n"
+cont
+end
+b OCIDefineArrayOfStruct
+commands
+silent
+printf "OCIDefineArrayOfStruct called\n"
+cont
+end
+b OCIDefineDynamic
+commands
+silent
+printf "OCIDefineDynamic called\n"
+cont
+end
+b OCIDefineObject
+commands
+silent
+printf "OCIDefineObject called\n"
+cont
+end
+b OCIDescribeAny
+commands
+silent
+printf "OCIDescribeAny called\n"
+cont
+end
+b OCIDescriptorAlloc
+commands
+silent
+printf "OCIDescriptorAlloc called\n"
+cont
+end
+b OCIDescriptorFree
+commands
+silent
+printf "OCIDescriptorFree called\n"
+cont
+end
+b OCIDurationBegin
+commands
+silent
+printf "OCIDurationBegin called\n"
+cont
+end
+b OCIDurationEnd
+commands
+silent
+printf "OCIDurationEnd called\n"
+cont
+end
+b OCIDurationGetParent
+commands
+silent
+printf "OCIDurationGetParent called\n"
+cont
+end
+b OCIEnvCreate
+commands
+silent
+printf "OCIEnvCreate called\n"
+cont
+end
+b OCIErrorGet
+commands
+silent
+printf "OCIErrorGet called\n"
+cont
+end
+b OCIExtractFromFile
+commands
+silent
+printf "OCIExtractFromFile called\n"
+cont
+end
+b OCIExtractFromList
+commands
+silent
+printf "OCIExtractFromList called\n"
+cont
+end
+b OCIExtractFromStr
+commands
+silent
+printf "OCIExtractFromStr called\n"
+cont
+end
+b OCIExtractInit
+commands
+silent
+printf "OCIExtractInit called\n"
+cont
+end
+b OCIExtractReset
+commands
+silent
+printf "OCIExtractReset called\n"
+cont
+end
+b OCIExtractSetKey
+commands
+silent
+printf "OCIExtractSetKey called\n"
+cont
+end
+b OCIExtractSetNumKeys
+commands
+silent
+printf "OCIExtractSetNumKeys called\n"
+cont
+end
+b OCIExtractTerm
+commands
+silent
+printf "OCIExtractTerm called\n"
+cont
+end
+b OCIExtractToBool
+commands
+silent
+printf "OCIExtractToBool called\n"
+cont
+end
+b OCIExtractToInt
+commands
+silent
+printf "OCIExtractToInt called\n"
+cont
+end
+b OCIExtractToList
+commands
+silent
+printf "OCIExtractToList called\n"
+cont
+end
+b OCIExtractToOCINum
+commands
+silent
+printf "OCIExtractToOCINum called\n"
+cont
+end
+b OCIExtractToStr
+commands
+silent
+printf "OCIExtractToStr called\n"
+cont
+end
+b OCIFileClose
+commands
+silent
+printf "OCIFileClose called\n"
+cont
+end
+b OCIFileExists
+commands
+silent
+printf "OCIFileExists called\n"
+cont
+end
+b OCIFileFlush
+commands
+silent
+printf "OCIFileFlush called\n"
+cont
+end
+b OCIFileGetLength
+commands
+silent
+printf "OCIFileGetLength called\n"
+cont
+end
+b OCIFileInit
+commands
+silent
+printf "OCIFileInit called\n"
+cont
+end
+b OCIFileOpen
+commands
+silent
+printf "OCIFileOpen called\n"
+cont
+end
+b OCIFileRead
+commands
+silent
+printf "OCIFileRead called\n"
+cont
+end
+b OCIFileSeek
+commands
+silent
+printf "OCIFileSeek called\n"
+cont
+end
+b OCIFileTerm
+commands
+silent
+printf "OCIFileTerm called\n"
+cont
+end
+b OCIFileWrite
+commands
+silent
+printf "OCIFileWrite called\n"
+cont
+end
+b OCIFormatInit
+commands
+silent
+printf "OCIFormatInit called\n"
+cont
+end
+b OCIFormatString
+commands
+silent
+printf "OCIFormatString called\n"
+cont
+end
+b OCIFormatTChar
+commands
+silent
+printf "OCIFormatTChar called\n"
+cont
+end
+b OCIFormatTDouble
+commands
+silent
+printf "OCIFormatTDouble called\n"
+cont
+end
+b OCIFormatTDvoid
+commands
+silent
+printf "OCIFormatTDvoid called\n"
+cont
+end
+b OCIFormatTEb1
+commands
+silent
+printf "OCIFormatTEb1 called\n"
+cont
+end
+b OCIFormatTEb2
+commands
+silent
+printf "OCIFormatTEb2 called\n"
+cont
+end
+b OCIFormatTEb4
+commands
+silent
+printf "OCIFormatTEb4 called\n"
+cont
+end
+b OCIFormatTEnd
+commands
+silent
+printf "OCIFormatTEnd called\n"
+cont
+end
+b OCIFormatTEword
+commands
+silent
+printf "OCIFormatTEword called\n"
+cont
+end
+b OCIFormatTSb1
+commands
+silent
+printf "OCIFormatTSb1 called\n"
+cont
+end
+b OCIFormatTSb2
+commands
+silent
+printf "OCIFormatTSb2 called\n"
+cont
+end
+b OCIFormatTSb4
+commands
+silent
+printf "OCIFormatTSb4 called\n"
+cont
+end
+b OCIFormatTSbig_ora
+commands
+silent
+printf " OCIFormatTSbig_ora called\n"
+cont
+end
+b OCIFormatTSword
+commands
+silent
+printf "OCIFormatTSword called\n"
+cont
+end
+b OCIFormatTText
+commands
+silent
+printf "OCIFormatTText called\n"
+cont
+end
+b OCIFormatTUb1
+commands
+silent
+printf "OCIFormatTUb1 called\n"
+cont
+end
+b OCIFormatTUb2
+commands
+silent
+printf "OCIFormatTUb2 called\n"
+cont
+end
+b OCIFormatTUb4
+commands
+silent
+printf "OCIFormatTUb4 called\n"
+cont
+end
+b OCIFormatTUbig_ora
+commands
+silent
+printf " OCIFormatTUbig_ora called\n"
+cont
+end
+b OCIFormatTUword
+commands
+silent
+printf "OCIFormatTUword called\n"
+cont
+end
+b OCIFormatTerm
+commands
+silent
+printf "OCIFormatTerm called\n"
+cont
+end
+b OCIIntervalAdd
+commands
+silent
+printf "OCIIntervalAdd called\n"
+cont
+end
+b OCIIntervalAssign
+commands
+silent
+printf "OCIIntervalAssign called\n"
+cont
+end
+b OCIIntervalCheck
+commands
+silent
+printf "OCIIntervalCheck called\n"
+cont
+end
+b OCIIntervalCompare
+commands
+silent
+printf "OCIIntervalCompare called\n"
+cont
+end
+b OCIIntervalDivide
+commands
+silent
+printf "OCIIntervalDivide called\n"
+cont
+end
+b OCIIntervalFromNumber
+commands
+silent
+printf "OCIIntervalFromNumber called\n"
+cont
+end
+b OCIIntervalFromText
+commands
+silent
+printf "OCIIntervalFromText called\n"
+cont
+end
+b OCIIntervalGetDaySecond
+commands
+silent
+printf "OCIIntervalGetDaySecond called\n"
+cont
+end
+b OCIIntervalGetYearMonth
+commands
+silent
+printf "OCIIntervalGetYearMonth called\n"
+cont
+end
+b OCIIntervalMultiply
+commands
+silent
+printf "OCIIntervalMultiply called\n"
+cont
+end
+b OCIIntervalSetDaySecond
+commands
+silent
+printf "OCIIntervalSetDaySecond called\n"
+cont
+end
+b OCIIntervalSetYearMonth
+commands
+silent
+printf "OCIIntervalSetYearMonth called\n"
+cont
+end
+b OCIIntervalSubtract
+commands
+silent
+printf "OCIIntervalSubtract called\n"
+cont
+end
+b OCIIntervalToNumber
+commands
+silent
+printf "OCIIntervalToNumber called\n"
+cont
+end
+b OCIIntervalToText
+commands
+silent
+printf "OCIIntervalToText called\n"
+cont
+end
+b OCIIterCreate
+commands
+silent
+printf "OCIIterCreate called\n"
+cont
+end
+b OCIIterDelete
+commands
+silent
+printf "OCIIterDelete called\n"
+cont
+end
+b OCIIterGetCurrent
+commands
+silent
+printf "OCIIterGetCurrent called\n"
+cont
+end
+b OCIIterInit
+commands
+silent
+printf "OCIIterInit called\n"
+cont
+end
+b OCIIterNext
+commands
+silent
+printf "OCIIterNext called\n"
+cont
+end
+b OCIIterPrev
+commands
+silent
+printf "OCIIterPrev called\n"
+cont
+end
+b OCILdaToSvcCtx
+commands
+silent
+printf "OCILdaToSvcCtx called\n"
+cont
+end
+b OCILobAppend
+commands
+silent
+printf "OCILobAppend called\n"
+cont
+end
+b OCILobAssign
+commands
+silent
+printf "OCILobAssign called\n"
+cont
+end
+b OCILobCharSetForm
+commands
+silent
+printf "OCILobCharSetForm called\n"
+cont
+end
+b OCILobCharSetId
+commands
+silent
+printf "OCILobCharSetId called\n"
+cont
+end
+b OCILobClose
+commands
+silent
+printf "OCILobClose called\n"
+cont
+end
+b OCILobCopy
+commands
+silent
+printf "OCILobCopy called\n"
+cont
+end
+b OCILobCreateTemporary
+commands
+silent
+printf "OCILobCreateTemporary called\n"
+cont
+end
+b OCILobDisableBuffering
+commands
+silent
+printf "OCILobDisableBuffering called\n"
+cont
+end
+b OCILobEnableBuffering
+commands
+silent
+printf "OCILobEnableBuffering called\n"
+cont
+end
+b OCILobErase
+commands
+silent
+printf "OCILobErase called\n"
+cont
+end
+b OCILobFileClose
+commands
+silent
+printf "OCILobFileClose called\n"
+cont
+end
+b OCILobFileCloseAll
+commands
+silent
+printf "OCILobFileCloseAll called\n"
+cont
+end
+b OCILobFileExists
+commands
+silent
+printf "OCILobFileExists called\n"
+cont
+end
+b OCILobFileGetName
+commands
+silent
+printf "OCILobFileGetName called\n"
+cont
+end
+b OCILobFileIsOpen
+commands
+silent
+printf "OCILobFileIsOpen called\n"
+cont
+end
+b OCILobFileOpen
+commands
+silent
+printf "OCILobFileOpen called\n"
+cont
+end
+b OCILobFileSetName
+commands
+silent
+printf "OCILobFileSetName called\n"
+cont
+end
+b OCILobFlushBuffer
+commands
+silent
+printf "OCILobFlushBuffer called\n"
+cont
+end
+b OCILobFreeTemporary
+commands
+silent
+printf "OCILobFreeTemporary called\n"
+cont
+end
+b OCILobGetChunkSize
+commands
+silent
+printf "OCILobGetChunkSize called\n"
+cont
+end
+b OCILobGetLength
+commands
+silent
+printf "OCILobGetLength called\n"
+cont
+end
+b OCILobIsEqual
+commands
+silent
+printf "OCILobIsEqual called\n"
+cont
+end
+b OCILobIsOpen
+commands
+silent
+printf "OCILobIsOpen called\n"
+cont
+end
+b OCILobIsTemporary
+commands
+silent
+printf "OCILobIsTemporary called\n"
+cont
+end
+b OCILobLoadFromFile
+commands
+silent
+printf "OCILobLoadFromFile called\n"
+cont
+end
+b OCILobLocatorAssign
+commands
+silent
+printf "OCILobLocatorAssign called\n"
+cont
+end
+b OCILobLocatorIsInit
+commands
+silent
+printf "OCILobLocatorIsInit called\n"
+cont
+end
+b OCILobOpen
+commands
+silent
+printf "OCILobOpen called\n"
+cont
+end
+b OCILobRead
+commands
+silent
+printf "OCILobRead called\n"
+cont
+end
+b OCILobTrim
+commands
+silent
+printf "OCILobTrim called\n"
+cont
+end
+b OCILobWrite
+commands
+silent
+printf "OCILobWrite called\n"
+cont
+end
+b OCILobWriteAppend
+commands
+silent
+printf "OCILobWriteAppend called\n"
+cont
+end
+b OCILogoff
+commands
+silent
+printf "OCILogoff called\n"
+cont
+end
+b OCILogon
+commands
+silent
+printf "OCILogon called\n"
+cont
+end
+b OCIMemoryAlloc
+commands
+silent
+printf "OCIMemoryAlloc called\n"
+cont
+end
+b OCIMemoryFree
+commands
+silent
+printf "OCIMemoryFree called\n"
+cont
+end
+b OCIMemoryResize
+commands
+silent
+printf "OCIMemoryResize called\n"
+cont
+end
+b OCIMemorySetCurrentIDs
+commands
+silent
+printf "OCIMemorySetCurrentIDs called\n"
+cont
+end
+b OCIMessageClose
+commands
+silent
+printf "OCIMessageClose called\n"
+cont
+end
+b OCIMessageGet
+commands
+silent
+printf "OCIMessageGet called\n"
+cont
+end
+b OCIMessageOpen
+commands
+silent
+printf "OCIMessageOpen called\n"
+cont
+end
+b OCIMultiByteInSizeToWideChar
+commands
+silent
+printf "OCIMultiByteInSizeToWideChar called\n"
+cont
+end
+b OCIMultiByteStrCaseConversion
+commands
+silent
+printf "OCIMultiByteStrCaseConversion called\n"
+cont
+end
+b OCIMultiByteStrcat
+commands
+silent
+printf "OCIMultiByteStrcat called\n"
+cont
+end
+b OCIMultiByteStrcmp
+commands
+silent
+printf "OCIMultiByteStrcmp called\n"
+cont
+end
+b OCIMultiByteStrcpy
+commands
+silent
+printf "OCIMultiByteStrcpy called\n"
+cont
+end
+b OCIMultiByteStrlen
+commands
+silent
+printf "OCIMultiByteStrlen called\n"
+cont
+end
+b OCIMultiByteStrnDisplayLength
+commands
+silent
+printf "OCIMultiByteStrnDisplayLength called\n"
+cont
+end
+b OCIMultiByteStrncat
+commands
+silent
+printf "OCIMultiByteStrncat called\n"
+cont
+end
+b OCIMultiByteStrncmp
+commands
+silent
+printf "OCIMultiByteStrncmp called\n"
+cont
+end
+b OCIMultiByteStrncpy
+commands
+silent
+printf "OCIMultiByteStrncpy called\n"
+cont
+end
+b OCIMultiByteToWideChar
+commands
+silent
+printf "OCIMultiByteToWideChar called\n"
+cont
+end
+b OCINlsGetInfo
+commands
+silent
+printf "OCINlsGetInfo called\n"
+cont
+end
+b OCINumberAbs
+commands
+silent
+printf "OCINumberAbs called\n"
+cont
+end
+b OCINumberAdd
+commands
+silent
+printf "OCINumberAdd called\n"
+cont
+end
+b OCINumberArcCos
+commands
+silent
+printf "OCINumberArcCos called\n"
+cont
+end
+b OCINumberArcSin
+commands
+silent
+printf "OCINumberArcSin called\n"
+cont
+end
+b OCINumberArcTan
+commands
+silent
+printf "OCINumberArcTan called\n"
+cont
+end
+b OCINumberArcTan2
+commands
+silent
+printf "OCINumberArcTan2 called\n"
+cont
+end
+b OCINumberAssign
+commands
+silent
+printf "OCINumberAssign called\n"
+cont
+end
+b OCINumberCeil
+commands
+silent
+printf "OCINumberCeil called\n"
+cont
+end
+b OCINumberCmp
+commands
+silent
+printf "OCINumberCmp called\n"
+cont
+end
+b OCINumberCos
+commands
+silent
+printf "OCINumberCos called\n"
+cont
+end
+b OCINumberDec
+commands
+silent
+printf "OCINumberDec called\n"
+cont
+end
+b OCINumberDiv
+commands
+silent
+printf "OCINumberDiv called\n"
+cont
+end
+b OCINumberExp
+commands
+silent
+printf "OCINumberExp called\n"
+cont
+end
+b OCINumberFloor
+commands
+silent
+printf "OCINumberFloor called\n"
+cont
+end
+b OCINumberFromInt
+commands
+silent
+printf "OCINumberFromInt called\n"
+cont
+end
+b OCINumberFromReal
+commands
+silent
+printf "OCINumberFromReal called\n"
+cont
+end
+b OCINumberFromText
+commands
+silent
+printf "OCINumberFromText called\n"
+cont
+end
+b OCINumberHypCos
+commands
+silent
+printf "OCINumberHypCos called\n"
+cont
+end
+b OCINumberHypSin
+commands
+silent
+printf "OCINumberHypSin called\n"
+cont
+end
+b OCINumberHypTan
+commands
+silent
+printf "OCINumberHypTan called\n"
+cont
+end
+b OCINumberInc
+commands
+silent
+printf "OCINumberInc called\n"
+cont
+end
+b OCINumberIntPower
+commands
+silent
+printf "OCINumberIntPower called\n"
+cont
+end
+b OCINumberIsInt
+commands
+silent
+printf "OCINumberIsInt called\n"
+cont
+end
+b OCINumberIsZero
+commands
+silent
+printf "OCINumberIsZero called\n"
+cont
+end
+b OCINumberLn
+commands
+silent
+printf "OCINumberLn called\n"
+cont
+end
+b OCINumberLog
+commands
+silent
+printf "OCINumberLog called\n"
+cont
+end
+b OCINumberMod
+commands
+silent
+printf "OCINumberMod called\n"
+cont
+end
+b OCINumberMul
+commands
+silent
+printf "OCINumberMul called\n"
+cont
+end
+b OCINumberNeg
+commands
+silent
+printf "OCINumberNeg called\n"
+cont
+end
+b OCINumberPower
+commands
+silent
+printf "OCINumberPower called\n"
+cont
+end
+b OCINumberPrec
+commands
+silent
+printf "OCINumberPrec called\n"
+cont
+end
+b OCINumberRound
+commands
+silent
+printf "OCINumberRound called\n"
+cont
+end
+b OCINumberSetPi
+commands
+silent
+printf "OCINumberSetPi called\n"
+cont
+end
+b OCINumberSetZero
+commands
+silent
+printf "OCINumberSetZero called\n"
+cont
+end
+b OCINumberShift
+commands
+silent
+printf "OCINumberShift called\n"
+cont
+end
+b OCINumberSign
+commands
+silent
+printf "OCINumberSign called\n"
+cont
+end
+b OCINumberSin
+commands
+silent
+printf "OCINumberSin called\n"
+cont
+end
+b OCINumberSqrt
+commands
+silent
+printf "OCINumberSqrt called\n"
+cont
+end
+b OCINumberSub
+commands
+silent
+printf "OCINumberSub called\n"
+cont
+end
+b OCINumberTan
+commands
+silent
+printf "OCINumberTan called\n"
+cont
+end
+b OCINumberToInt
+commands
+silent
+printf "OCINumberToInt called\n"
+cont
+end
+b OCINumberToReal
+commands
+silent
+printf "OCINumberToReal called\n"
+cont
+end
+b OCINumberToText
+commands
+silent
+printf "OCINumberToText called\n"
+cont
+end
+b OCINumberTrunc
+commands
+silent
+printf "OCINumberTrunc called\n"
+cont
+end
+b OCIObjectAlwaysLatest
+commands
+silent
+printf "OCIObjectAlwaysLatest called\n"
+cont
+end
+b OCIObjectArrayPin
+commands
+silent
+printf "OCIObjectArrayPin called\n"
+cont
+end
+b OCIObjectCopy
+commands
+silent
+printf "OCIObjectCopy called\n"
+cont
+end
+b OCIObjectExists
+commands
+silent
+printf "OCIObjectExists called\n"
+cont
+end
+b OCIObjectFlush
+commands
+silent
+printf "OCIObjectFlush called\n"
+cont
+end
+b OCIObjectFlushRefresh
+commands
+silent
+printf "OCIObjectFlushRefresh called\n"
+cont
+end
+b OCIObjectFree
+commands
+silent
+printf "OCIObjectFree called\n"
+cont
+end
+b OCIObjectGetAttr
+commands
+silent
+printf "OCIObjectGetAttr called\n"
+cont
+end
+b OCIObjectGetInd
+commands
+silent
+printf "OCIObjectGetInd called\n"
+cont
+end
+b OCIObjectGetObjectRef
+commands
+silent
+printf "OCIObjectGetObjectRef called\n"
+cont
+end
+b OCIObjectGetPrimaryKeyTypeRef
+commands
+silent
+printf "OCIObjectGetPrimaryKeyTypeRef called\n"
+cont
+end
+b OCIObjectGetProperty
+commands
+silent
+printf "OCIObjectGetProperty called\n"
+cont
+end
+b OCIObjectGetTypeRef
+commands
+silent
+printf "OCIObjectGetTypeRef called\n"
+cont
+end
+b OCIObjectIsDirtied
+commands
+silent
+printf "OCIObjectIsDirtied called\n"
+cont
+end
+b OCIObjectIsDirty
+commands
+silent
+printf "OCIObjectIsDirty called\n"
+cont
+end
+b OCIObjectIsLoaded
+commands
+silent
+printf "OCIObjectIsLoaded called\n"
+cont
+end
+b OCIObjectIsLocked
+commands
+silent
+printf "OCIObjectIsLocked called\n"
+cont
+end
+b OCIObjectLock
+commands
+silent
+printf "OCIObjectLock called\n"
+cont
+end
+b OCIObjectLockNoWait
+commands
+silent
+printf "OCIObjectLockNoWait called\n"
+cont
+end
+b OCIObjectMakeObjectRef
+commands
+silent
+printf "OCIObjectMakeObjectRef called\n"
+cont
+end
+b OCIObjectMarkDelete
+commands
+silent
+printf "OCIObjectMarkDelete called\n"
+cont
+end
+b OCIObjectMarkDeleteByRef
+commands
+silent
+printf "OCIObjectMarkDeleteByRef called\n"
+cont
+end
+b OCIObjectMarkUpdate
+commands
+silent
+printf "OCIObjectMarkUpdate called\n"
+cont
+end
+b OCIObjectNew
+commands
+silent
+printf "OCIObjectNew called\n"
+cont
+end
+b OCIObjectNotAlwaysLatest
+commands
+silent
+printf "OCIObjectNotAlwaysLatest called\n"
+cont
+end
+b OCIObjectPin
+commands
+silent
+printf "OCIObjectPin called\n"
+cont
+end
+b OCIObjectPinCountReset
+commands
+silent
+printf "OCIObjectPinCountReset called\n"
+cont
+end
+b OCIObjectPinTable
+commands
+silent
+printf "OCIObjectPinTable called\n"
+cont
+end
+b OCIObjectRefresh
+commands
+silent
+printf "OCIObjectRefresh called\n"
+cont
+end
+b OCIObjectSetAttr
+commands
+silent
+printf "OCIObjectSetAttr called\n"
+cont
+end
+b OCIObjectUnmark
+commands
+silent
+printf "OCIObjectUnmark called\n"
+cont
+end
+b OCIObjectUnmarkByRef
+commands
+silent
+printf "OCIObjectUnmarkByRef called\n"
+cont
+end
+b OCIObjectUnpin
+commands
+silent
+printf "OCIObjectUnpin called\n"
+cont
+end
+b OCIOpaqueCtxGetCtx
+commands
+silent
+printf "OCIOpaqueCtxGetCtx called\n"
+cont
+end
+b OCIOpaqueCtxGetHandles
+commands
+silent
+printf "OCIOpaqueCtxGetHandles called\n"
+cont
+end
+b OCIOpaqueCtxGetState
+commands
+silent
+printf "OCIOpaqueCtxGetState called\n"
+cont
+end
+b OCIOpaqueCtxGetType
+commands
+silent
+printf "OCIOpaqueCtxGetType called\n"
+cont
+end
+b OCIOpaqueCtxPickleSize
+commands
+silent
+printf "OCIOpaqueCtxPickleSize called\n"
+cont
+end
+b OCIOpaqueCtxSetCtx
+commands
+silent
+printf "OCIOpaqueCtxSetCtx called\n"
+cont
+end
+b OCIOpaqueCtxSetError
+commands
+silent
+printf "OCIOpaqueCtxSetError called\n"
+cont
+end
+b OCIOpaqueCtxSetState
+commands
+silent
+printf "OCIOpaqueCtxSetState called\n"
+cont
+end
+b OCIOpaqueDataDone
+commands
+silent
+printf "OCIOpaqueDataDone called\n"
+cont
+end
+b OCIOpaqueDataGetLength
+commands
+silent
+printf "OCIOpaqueDataGetLength called\n"
+cont
+end
+b OCIOpaqueDataIsNull
+commands
+silent
+printf "OCIOpaqueDataIsNull called\n"
+cont
+end
+b OCIOpaqueDataMakeNull
+commands
+silent
+printf "OCIOpaqueDataMakeNull called\n"
+cont
+end
+b OCIOpaqueDataPickle
+commands
+silent
+printf "OCIOpaqueDataPickle called\n"
+cont
+end
+b OCIOpaqueDataRead
+commands
+silent
+printf "OCIOpaqueDataRead called\n"
+cont
+end
+b OCIOpaqueDataSetLength
+commands
+silent
+printf "OCIOpaqueDataSetLength called\n"
+cont
+end
+b OCIOpaqueDataUnpickle
+commands
+silent
+printf "OCIOpaqueDataUnpickle called\n"
+cont
+end
+b OCIOpaqueDataWrite
+commands
+silent
+printf "OCIOpaqueDataWrite called\n"
+cont
+end
+b OCIParamGet
+commands
+silent
+printf "OCIParamGet called\n"
+cont
+end
+b OCIParamSet
+commands
+silent
+printf "OCIParamSet called\n"
+cont
+end
+b OCIPasswordChange
+commands
+silent
+printf "OCIPasswordChange called\n"
+cont
+end
+b OCIPicklerFdoFree
+commands
+silent
+printf "OCIPicklerFdoFree called\n"
+cont
+end
+b OCIPicklerFdoInit
+commands
+silent
+printf "OCIPicklerFdoInit called\n"
+cont
+end
+b OCIPicklerImageAddNullScalar
+commands
+silent
+printf "OCIPicklerImageAddNullScalar called\n"
+cont
+end
+b OCIPicklerImageAddScalar
+commands
+silent
+printf "OCIPicklerImageAddScalar called\n"
+cont
+end
+b OCIPicklerImageCollAddScalar
+commands
+silent
+printf "OCIPicklerImageCollAddScalar called\n"
+cont
+end
+b OCIPicklerImageCollBegin
+commands
+silent
+printf "OCIPicklerImageCollBegin called\n"
+cont
+end
+b OCIPicklerImageCollBeginScan
+commands
+silent
+printf "OCIPicklerImageCollBeginScan called\n"
+cont
+end
+b OCIPicklerImageCollEnd
+commands
+silent
+printf "OCIPicklerImageCollEnd called\n"
+cont
+end
+b OCIPicklerImageCollGetScalar
+commands
+silent
+printf "OCIPicklerImageCollGetScalar called\n"
+cont
+end
+b OCIPicklerImageCollGetScalarSize
+commands
+silent
+printf "OCIPicklerImageCollGetScalarSize called\n"
+cont
+end
+b OCIPicklerImageFree
+commands
+silent
+printf "OCIPicklerImageFree called\n"
+cont
+end
+b OCIPicklerImageGenerate
+commands
+silent
+printf "OCIPicklerImageGenerate called\n"
+cont
+end
+b OCIPicklerImageGetScalar
+commands
+silent
+printf "OCIPicklerImageGetScalar called\n"
+cont
+end
+b OCIPicklerImageGetScalarSize
+commands
+silent
+printf "OCIPicklerImageGetScalarSize called\n"
+cont
+end
+b OCIPicklerImageInit
+commands
+silent
+printf "OCIPicklerImageInit called\n"
+cont
+end
+b OCIPicklerTdsAddAttr
+commands
+silent
+printf "OCIPicklerTdsAddAttr called\n"
+cont
+end
+b OCIPicklerTdsCreateElement
+commands
+silent
+printf "OCIPicklerTdsCreateElement called\n"
+cont
+end
+b OCIPicklerTdsCreateElementChar
+commands
+silent
+printf "OCIPicklerTdsCreateElementChar called\n"
+cont
+end
+b OCIPicklerTdsCreateElementNumber
+commands
+silent
+printf "OCIPicklerTdsCreateElementNumber called\n"
+cont
+end
+b OCIPicklerTdsCreateElementRaw
+commands
+silent
+printf "OCIPicklerTdsCreateElementRaw called\n"
+cont
+end
+b OCIPicklerTdsCreateElementVarchar
+commands
+silent
+printf "OCIPicklerTdsCreateElementVarchar called\n"
+cont
+end
+b OCIPicklerTdsCtxFree
+commands
+silent
+printf "OCIPicklerTdsCtxFree called\n"
+cont
+end
+b OCIPicklerTdsCtxInit
+commands
+silent
+printf "OCIPicklerTdsCtxInit called\n"
+cont
+end
+b OCIPicklerTdsFree
+commands
+silent
+printf "OCIPicklerTdsFree called\n"
+cont
+end
+b OCIPicklerTdsGenerate
+commands
+silent
+printf "OCIPicklerTdsGenerate called\n"
+cont
+end
+b OCIPicklerTdsGetAttr
+commands
+silent
+printf "OCIPicklerTdsGetAttr called\n"
+cont
+end
+b OCIPicklerTdsInit
+commands
+silent
+printf "OCIPicklerTdsInit called\n"
+cont
+end
+b OCIRawAllocSize
+commands
+silent
+printf "OCIRawAllocSize called\n"
+cont
+end
+b OCIRawAssignBytes
+commands
+silent
+printf "OCIRawAssignBytes called\n"
+cont
+end
+b OCIRawAssignRaw
+commands
+silent
+printf "OCIRawAssignRaw called\n"
+cont
+end
+b OCIRawPtr
+commands
+silent
+printf "OCIRawPtr called\n"
+cont
+end
+b OCIRawResize
+commands
+silent
+printf "OCIRawResize called\n"
+cont
+end
+b OCIRawSize
+commands
+silent
+printf "OCIRawSize called\n"
+cont
+end
+b OCIRefAssign
+commands
+silent
+printf "OCIRefAssign called\n"
+cont
+end
+b OCIRefClear
+commands
+silent
+printf "OCIRefClear called\n"
+cont
+end
+b OCIRefFromHex
+commands
+silent
+printf "OCIRefFromHex called\n"
+cont
+end
+b OCIRefHexSize
+commands
+silent
+printf "OCIRefHexSize called\n"
+cont
+end
+b OCIRefIsEqual
+commands
+silent
+printf "OCIRefIsEqual called\n"
+cont
+end
+b OCIRefIsNull
+commands
+silent
+printf "OCIRefIsNull called\n"
+cont
+end
+b OCIRefToHex
+commands
+silent
+printf "OCIRefToHex called\n"
+cont
+end
+b OCIReset
+commands
+silent
+printf "OCIReset called\n"
+cont
+end
+b OCIResultSetToStmt
+commands
+silent
+printf "OCIResultSetToStmt called\n"
+cont
+end
+b OCIRowTypeAddBuiltin
+commands
+silent
+printf "OCIRowTypeAddBuiltin called\n"
+cont
+end
+b OCIRowTypeAddUserType
+commands
+silent
+printf "OCIRowTypeAddUserType called\n"
+cont
+end
+b OCIRowTypeCreate
+commands
+silent
+printf "OCIRowTypeCreate called\n"
+cont
+end
+b OCIRowTypeEndCreate
+commands
+silent
+printf "OCIRowTypeEndCreate called\n"
+cont
+end
+b OCIRowTypeFree
+commands
+silent
+printf "OCIRowTypeFree called\n"
+cont
+end
+b OCIRowTypeGetBuiltin
+commands
+silent
+printf "OCIRowTypeGetBuiltin called\n"
+cont
+end
+b OCIRowTypeGetCount
+commands
+silent
+printf "OCIRowTypeGetCount called\n"
+cont
+end
+b OCIRowTypeGetTypeCode
+commands
+silent
+printf "OCIRowTypeGetTypeCode called\n"
+cont
+end
+b OCIRowTypeGetUserType
+commands
+silent
+printf "OCIRowTypeGetUserType called\n"
+cont
+end
+b OCISecurityAbortIdentity
+commands
+silent
+printf "OCISecurityAbortIdentity called\n"
+cont
+end
+b OCISecurityClosePersona
+commands
+silent
+printf "OCISecurityClosePersona called\n"
+cont
+end
+b OCISecurityCloseWallet
+commands
+silent
+printf "OCISecurityCloseWallet called\n"
+cont
+end
+b OCISecurityCreateIdentity
+commands
+silent
+printf "OCISecurityCreateIdentity called\n"
+cont
+end
+b OCISecurityCreatePersona
+commands
+silent
+printf "OCISecurityCreatePersona called\n"
+cont
+end
+b OCISecurityCreateWallet
+commands
+silent
+printf "OCISecurityCreateWallet called\n"
+cont
+end
+b OCISecurityDeEnvelope
+commands
+silent
+printf "OCISecurityDeEnvelope called\n"
+cont
+end
+b OCISecurityDecrypt
+commands
+silent
+printf "OCISecurityDecrypt called\n"
+cont
+end
+b OCISecurityDestroyWallet
+commands
+silent
+printf "OCISecurityDestroyWallet called\n"
+cont
+end
+b OCISecurityEncrypt
+commands
+silent
+printf "OCISecurityEncrypt called\n"
+cont
+end
+b OCISecurityEncryptExpansion
+commands
+silent
+printf "OCISecurityEncryptExpansion called\n"
+cont
+end
+b OCISecurityEnvelope
+commands
+silent
+printf "OCISecurityEnvelope called\n"
+cont
+end
+b OCISecurityFreeIdentity
+commands
+silent
+printf "OCISecurityFreeIdentity called\n"
+cont
+end
+b OCISecurityGetIdentity
+commands
+silent
+printf "OCISecurityGetIdentity called\n"
+cont
+end
+b OCISecurityGetProtection
+commands
+silent
+printf "OCISecurityGetProtection called\n"
+cont
+end
+b OCISecurityHash
+commands
+silent
+printf "OCISecurityHash called\n"
+cont
+end
+b OCISecurityHashExpansion
+commands
+silent
+printf "OCISecurityHashExpansion called\n"
+cont
+end
+b OCISecurityInitBlock
+commands
+silent
+printf "OCISecurityInitBlock called\n"
+cont
+end
+b OCISecurityInitialize
+commands
+silent
+printf "OCISecurityInitialize called\n"
+cont
+end
+b OCISecurityKeyedHash
+commands
+silent
+printf "OCISecurityKeyedHash called\n"
+cont
+end
+b OCISecurityKeyedHashExpansion
+commands
+silent
+printf "OCISecurityKeyedHashExpansion called\n"
+cont
+end
+b OCISecurityOpenPersona
+commands
+silent
+printf "OCISecurityOpenPersona called\n"
+cont
+end
+b OCISecurityOpenWallet
+commands
+silent
+printf "OCISecurityOpenWallet called\n"
+cont
+end
+b OCISecurityPKDecrypt
+commands
+silent
+printf "OCISecurityPKDecrypt called\n"
+cont
+end
+b OCISecurityPKEncryptExpansion
+commands
+silent
+printf "OCISecurityPKEncryptExpansion called\n"
+cont
+end
+b OCISecurityPurgeBlock
+commands
+silent
+printf "OCISecurityPurgeBlock called\n"
+cont
+end
+b OCISecurityRandomBytes
+commands
+silent
+printf "OCISecurityRandomBytes called\n"
+cont
+end
+b OCISecurityRandomNumber
+commands
+silent
+printf "OCISecurityRandomNumber called\n"
+cont
+end
+b OCISecurityRemoveIdentity
+commands
+silent
+printf "OCISecurityRemoveIdentity called\n"
+cont
+end
+b OCISecurityRemovePersona
+commands
+silent
+printf "OCISecurityRemovePersona called\n"
+cont
+end
+b OCISecurityReuseBlock
+commands
+silent
+printf "OCISecurityReuseBlock called\n"
+cont
+end
+b OCISecuritySeedRandom
+commands
+silent
+printf "OCISecuritySeedRandom called\n"
+cont
+end
+b OCISecuritySetBlock
+commands
+silent
+printf "OCISecuritySetBlock called\n"
+cont
+end
+b OCISecuritySetProtection
+commands
+silent
+printf "OCISecuritySetProtection called\n"
+cont
+end
+b OCISecuritySign
+commands
+silent
+printf "OCISecuritySign called\n"
+cont
+end
+b OCISecuritySignDetExpansion
+commands
+silent
+printf "OCISecuritySignDetExpansion called\n"
+cont
+end
+b OCISecuritySignDetached
+commands
+silent
+printf "OCISecuritySignDetached called\n"
+cont
+end
+b OCISecuritySignExpansion
+commands
+silent
+printf "OCISecuritySignExpansion called\n"
+cont
+end
+b OCISecurityStorePersona
+commands
+silent
+printf "OCISecurityStorePersona called\n"
+cont
+end
+b OCISecurityStoreTrustedIdentity
+commands
+silent
+printf "OCISecurityStoreTrustedIdentity called\n"
+cont
+end
+b OCISecurityTerminate
+commands
+silent
+printf "OCISecurityTerminate called\n"
+cont
+end
+b OCISecurityValidate
+commands
+silent
+printf "OCISecurityValidate called\n"
+cont
+end
+b OCISecurityVerify
+commands
+silent
+printf "OCISecurityVerify called\n"
+cont
+end
+b OCISecurityVerifyDetached
+commands
+silent
+printf "OCISecurityVerifyDetached called\n"
+cont
+end
+b OCISecurity_PKEncrypt
+commands
+silent
+printf " OCISecurity_PKEncrypt called\n"
+cont
+end
+b OCIServerVersion
+commands
+silent
+printf "OCIServerVersion called\n"
+cont
+end
+b OCISessionEnd
+commands
+silent
+printf "OCISessionEnd called\n"
+cont
+end
+b OCIStmtExecute
+commands
+silent
+printf "OCIStmtExecute called\n"
+cont
+end
+b OCIStmtFetch
+commands
+silent
+printf "OCIStmtFetch called\n"
+cont
+end
+b OCIStmtGetBindInfo
+commands
+silent
+printf "OCIStmtGetBindInfo called\n"
+cont
+end
+b OCIStmtGetPieceInfo
+commands
+silent
+printf "OCIStmtGetPieceInfo called\n"
+cont
+end
+b OCIStmtSetPieceInfo
+commands
+silent
+printf "OCIStmtSetPieceInfo called\n"
+cont
+end
+b OCIStringAllocSize
+commands
+silent
+printf "OCIStringAllocSize called\n"
+cont
+end
+b OCIStringAssign
+commands
+silent
+printf "OCIStringAssign called\n"
+cont
+end
+b OCIStringAssignText
+commands
+silent
+printf "OCIStringAssignText called\n"
+cont
+end
+b OCIStringPtr
+commands
+silent
+printf "OCIStringPtr called\n"
+cont
+end
+b OCIStringResize
+commands
+silent
+printf "OCIStringResize called\n"
+cont
+end
+b OCIStringSize
+commands
+silent
+printf "OCIStringSize called\n"
+cont
+end
+b OCISubscriptionDisable
+commands
+silent
+printf "OCISubscriptionDisable called\n"
+cont
+end
+b OCISubscriptionEnable
+commands
+silent
+printf "OCISubscriptionEnable called\n"
+cont
+end
+b OCISubscriptionPost
+commands
+silent
+printf "OCISubscriptionPost called\n"
+cont
+end
+b OCISubscriptionRegister
+commands
+silent
+printf "OCISubscriptionRegister called\n"
+cont
+end
+b OCISubscriptionUnRegister
+commands
+silent
+printf "OCISubscriptionUnRegister called\n"
+cont
+end
+b OCISvcCtxToLda
+commands
+silent
+printf "OCISvcCtxToLda called\n"
+cont
+end
+b OCITableDelete
+commands
+silent
+printf "OCITableDelete called\n"
+cont
+end
+b OCITableExists
+commands
+silent
+printf "OCITableExists called\n"
+cont
+end
+b OCITableFirst
+commands
+silent
+printf "OCITableFirst called\n"
+cont
+end
+b OCITableLast
+commands
+silent
+printf "OCITableLast called\n"
+cont
+end
+b OCITableNext
+commands
+silent
+printf "OCITableNext called\n"
+cont
+end
+b OCITablePrev
+commands
+silent
+printf "OCITablePrev called\n"
+cont
+end
+b OCITableSize
+commands
+silent
+printf "OCITableSize called\n"
+cont
+end
+b OCITerminate
+commands
+silent
+printf "OCITerminate called\n"
+cont
+end
+b OCIThreadClose
+commands
+silent
+printf "OCIThreadClose called\n"
+cont
+end
+b OCIThreadCreate
+commands
+silent
+printf "OCIThreadCreate called\n"
+cont
+end
+b OCIThreadHandleGet
+commands
+silent
+printf "OCIThreadHandleGet called\n"
+cont
+end
+b OCIThreadHndDestroy
+commands
+silent
+printf "OCIThreadHndDestroy called\n"
+cont
+end
+b OCIThreadHndInit
+commands
+silent
+printf "OCIThreadHndInit called\n"
+cont
+end
+b OCIThreadIdDestroy
+commands
+silent
+printf "OCIThreadIdDestroy called\n"
+cont
+end
+b OCIThreadIdGet
+commands
+silent
+printf "OCIThreadIdGet called\n"
+cont
+end
+b OCIThreadIdInit
+commands
+silent
+printf "OCIThreadIdInit called\n"
+cont
+end
+b OCIThreadIdNull
+commands
+silent
+printf "OCIThreadIdNull called\n"
+cont
+end
+b OCIThreadIdSame
+commands
+silent
+printf "OCIThreadIdSame called\n"
+cont
+end
+b OCIThreadIdSet
+commands
+silent
+printf "OCIThreadIdSet called\n"
+cont
+end
+b OCIThreadIdSetNull
+commands
+silent
+printf "OCIThreadIdSetNull called\n"
+cont
+end
+b OCIThreadInit
+commands
+silent
+printf "OCIThreadInit called\n"
+cont
+end
+b OCIThreadIsMulti
+commands
+silent
+printf "OCIThreadIsMulti called\n"
+cont
+end
+b OCIThreadJoin
+commands
+silent
+printf "OCIThreadJoin called\n"
+cont
+end
+b OCIThreadKeyDestroy
+commands
+silent
+printf "OCIThreadKeyDestroy called\n"
+cont
+end
+b OCIThreadKeyGet
+commands
+silent
+printf "OCIThreadKeyGet called\n"
+cont
+end
+b OCIThreadKeyInit
+commands
+silent
+printf "OCIThreadKeyInit called\n"
+cont
+end
+b OCIThreadKeySet
+commands
+silent
+printf "OCIThreadKeySet called\n"
+cont
+end
+b OCIThreadMutexAcquire
+commands
+silent
+printf "OCIThreadMutexAcquire called\n"
+cont
+end
+b OCIThreadMutexDestroy
+commands
+silent
+printf "OCIThreadMutexDestroy called\n"
+cont
+end
+b OCIThreadMutexInit
+commands
+silent
+printf "OCIThreadMutexInit called\n"
+cont
+end
+b OCIThreadMutexRelease
+commands
+silent
+printf "OCIThreadMutexRelease called\n"
+cont
+end
+b OCIThreadProcessInit
+commands
+silent
+printf "OCIThreadProcessInit called\n"
+cont
+end
+b OCIThreadTerm
+commands
+silent
+printf "OCIThreadTerm called\n"
+cont
+end
+b OCITransCommit
+commands
+silent
+printf "OCITransCommit called\n"
+cont
+end
+b OCITransDetach
+commands
+silent
+printf "OCITransDetach called\n"
+cont
+end
+b OCITransForget
+commands
+silent
+printf "OCITransForget called\n"
+cont
+end
+b OCITransPrepare
+commands
+silent
+printf "OCITransPrepare called\n"
+cont
+end
+b OCITransRollback
+commands
+silent
+printf "OCITransRollback called\n"
+cont
+end
+b OCITransStart
+commands
+silent
+printf "OCITransStart called\n"
+cont
+end
+b OCITypeArrayByName
+commands
+silent
+printf "OCITypeArrayByName called\n"
+cont
+end
+b OCITypeArrayByRef
+commands
+silent
+printf "OCITypeArrayByRef called\n"
+cont
+end
+b OCITypeAttrByName
+commands
+silent
+printf "OCITypeAttrByName called\n"
+cont
+end
+b OCITypeAttrNext
+commands
+silent
+printf "OCITypeAttrNext called\n"
+cont
+end
+b OCITypeAttrs
+commands
+silent
+printf "OCITypeAttrs called\n"
+cont
+end
+b OCITypeByRef
+commands
+silent
+printf "OCITypeByRef called\n"
+cont
+end
+b OCITypeCollElem
+commands
+silent
+printf "OCITypeCollElem called\n"
+cont
+end
+b OCITypeCollExtTypeCode
+commands
+silent
+printf "OCITypeCollExtTypeCode called\n"
+cont
+end
+b OCITypeCollSize
+commands
+silent
+printf "OCITypeCollSize called\n"
+cont
+end
+b OCITypeCollTypeCode
+commands
+silent
+printf "OCITypeCollTypeCode called\n"
+cont
+end
+b OCITypeElemCharSetForm
+commands
+silent
+printf "OCITypeElemCharSetForm called\n"
+cont
+end
+b OCITypeElemCharSetID
+commands
+silent
+printf "OCITypeElemCharSetID called\n"
+cont
+end
+b OCITypeElemDefaultValue
+commands
+silent
+printf "OCITypeElemDefaultValue called\n"
+cont
+end
+b OCITypeElemExtTypeCode
+commands
+silent
+printf "OCITypeElemExtTypeCode called\n"
+cont
+end
+b OCITypeElemFlags
+commands
+silent
+printf "OCITypeElemFlags called\n"
+cont
+end
+b OCITypeElemLength
+commands
+silent
+printf "OCITypeElemLength called\n"
+cont
+end
+b OCITypeElemNumPrec
+commands
+silent
+printf "OCITypeElemNumPrec called\n"
+cont
+end
+b OCITypeElemNumScale
+commands
+silent
+printf "OCITypeElemNumScale called\n"
+cont
+end
+b OCITypeElemParamMode
+commands
+silent
+printf "OCITypeElemParamMode called\n"
+cont
+end
+b OCITypeElemParameterizedType
+commands
+silent
+printf "OCITypeElemParameterizedType called\n"
+cont
+end
+b OCITypeElemType
+commands
+silent
+printf "OCITypeElemType called\n"
+cont
+end
+b OCITypeElemTypeCode
+commands
+silent
+printf "OCITypeElemTypeCode called\n"
+cont
+end
+b OCITypeIterFree
+commands
+silent
+printf "OCITypeIterFree called\n"
+cont
+end
+b OCITypeIterNew
+commands
+silent
+printf "OCITypeIterNew called\n"
+cont
+end
+b OCITypeIterSet
+commands
+silent
+printf "OCITypeIterSet called\n"
+cont
+end
+b OCITypeMethodByName
+commands
+silent
+printf "OCITypeMethodByName called\n"
+cont
+end
+b OCITypeMethodEncap
+commands
+silent
+printf "OCITypeMethodEncap called\n"
+cont
+end
+b OCITypeMethodFlags
+commands
+silent
+printf "OCITypeMethodFlags called\n"
+cont
+end
+b OCITypeMethodMap
+commands
+silent
+printf "OCITypeMethodMap called\n"
+cont
+end
+b OCITypeMethodName
+commands
+silent
+printf "OCITypeMethodName called\n"
+cont
+end
+b OCITypeMethodNext
+commands
+silent
+printf "OCITypeMethodNext called\n"
+cont
+end
+b OCITypeMethodOrder
+commands
+silent
+printf "OCITypeMethodOrder called\n"
+cont
+end
+b OCITypeMethodOverload
+commands
+silent
+printf "OCITypeMethodOverload called\n"
+cont
+end
+b OCITypeMethodParams
+commands
+silent
+printf "OCITypeMethodParams called\n"
+cont
+end
+b OCITypeMethods
+commands
+silent
+printf "OCITypeMethods called\n"
+cont
+end
+b OCITypeParamByName
+commands
+silent
+printf "OCITypeParamByName called\n"
+cont
+end
+b OCITypeParamByPos
+commands
+silent
+printf "OCITypeParamByPos called\n"
+cont
+end
+b OCITypeParamPos
+commands
+silent
+printf "OCITypeParamPos called\n"
+cont
+end
+b OCITypeResult
+commands
+silent
+printf "OCITypeResult called\n"
+cont
+end
+b OCITypeSchema
+commands
+silent
+printf "OCITypeSchema called\n"
+cont
+end
+b OCITypeTypeCode
+commands
+silent
+printf "OCITypeTypeCode called\n"
+cont
+end
+b OCITypeVTInit
+commands
+silent
+printf "OCITypeVTInit called\n"
+cont
+end
+b OCITypeVTInsert
+commands
+silent
+printf "OCITypeVTInsert called\n"
+cont
+end
+b OCITypeVTSelect
+commands
+silent
+printf "OCITypeVTSelect called\n"
+cont
+end
+b OCITypeVersion
+commands
+silent
+printf "OCITypeVersion called\n"
+cont
+end
+b OCIUnicodeToCharSet
+commands
+silent
+printf "OCIUnicodeToCharSet called\n"
+cont
+end
+b OCIUserCallbackGet
+commands
+silent
+printf "OCIUserCallbackGet called\n"
+cont
+end
+b OCIUserCallbackRegister
+commands
+silent
+printf "OCIUserCallbackRegister called\n"
+cont
+end
+b OCIWideCharDisplayLength
+commands
+silent
+printf "OCIWideCharDisplayLength called\n"
+cont
+end
+b OCIWideCharInSizeToMultiByte
+commands
+silent
+printf "OCIWideCharInSizeToMultiByte called\n"
+cont
+end
+b OCIWideCharIsAlnum
+commands
+silent
+printf "OCIWideCharIsAlnum called\n"
+cont
+end
+b OCIWideCharIsAlpha
+commands
+silent
+printf "OCIWideCharIsAlpha called\n"
+cont
+end
+b OCIWideCharIsCntrl
+commands
+silent
+printf "OCIWideCharIsCntrl called\n"
+cont
+end
+b OCIWideCharIsDigit
+commands
+silent
+printf "OCIWideCharIsDigit called\n"
+cont
+end
+b OCIWideCharIsGraph
+commands
+silent
+printf "OCIWideCharIsGraph called\n"
+cont
+end
+b OCIWideCharIsLower
+commands
+silent
+printf "OCIWideCharIsLower called\n"
+cont
+end
+b OCIWideCharIsPrint
+commands
+silent
+printf "OCIWideCharIsPrint called\n"
+cont
+end
+b OCIWideCharIsPunct
+commands
+silent
+printf "OCIWideCharIsPunct called\n"
+cont
+end
+b OCIWideCharIsSingleByte
+commands
+silent
+printf "OCIWideCharIsSingleByte called\n"
+cont
+end
+b OCIWideCharIsSpace
+commands
+silent
+printf "OCIWideCharIsSpace called\n"
+cont
+end
+b OCIWideCharIsUpper
+commands
+silent
+printf "OCIWideCharIsUpper called\n"
+cont
+end
+b OCIWideCharIsXdigit
+commands
+silent
+printf "OCIWideCharIsXdigit called\n"
+cont
+end
+b OCIWideCharMultiByteLength
+commands
+silent
+printf "OCIWideCharMultiByteLength called\n"
+cont
+end
+b OCIWideCharStrCaseConversion
+commands
+silent
+printf "OCIWideCharStrCaseConversion called\n"
+cont
+end
+b OCIWideCharStrcat
+commands
+silent
+printf "OCIWideCharStrcat called\n"
+cont
+end
+b OCIWideCharStrchr
+commands
+silent
+printf "OCIWideCharStrchr called\n"
+cont
+end
+b OCIWideCharStrcmp
+commands
+silent
+printf "OCIWideCharStrcmp called\n"
+cont
+end
+b OCIWideCharStrcpy
+commands
+silent
+printf "OCIWideCharStrcpy called\n"
+cont
+end
+b OCIWideCharStrlen
+commands
+silent
+printf "OCIWideCharStrlen called\n"
+cont
+end
+b OCIWideCharStrncat
+commands
+silent
+printf "OCIWideCharStrncat called\n"
+cont
+end
+b OCIWideCharStrncmp
+commands
+silent
+printf "OCIWideCharStrncmp called\n"
+cont
+end
+b OCIWideCharStrncpy
+commands
+silent
+printf "OCIWideCharStrncpy called\n"
+cont
+end
+b OCIWideCharStrrchr
+commands
+silent
+printf "OCIWideCharStrrchr called\n"
+cont
+end
+b OCIWideCharToLower
+commands
+silent
+printf "OCIWideCharToLower called\n"
+cont
+end
+b OCIWideCharToMultiByte
+commands
+silent
+printf "OCIWideCharToMultiByte called\n"
+cont
+end
+b OCIWideCharToUpper
+commands
+silent
+printf "OCIWideCharToUpper called\n"
+cont
+end
+

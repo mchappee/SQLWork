@@ -1,0 +1,5 @@
+// Informal bugs database
+
+A saved connection which refers to a "dead" database back end
+(i.e one which didn't initialise) dies with an assert
+

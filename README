@@ -1,0 +1,12 @@
+SQLWork is a visual SQL (Structured Query Language) input and retrieval
+program. It is useful for both DBAs and database developers. Query Results can
+be displayed in plain text or in grid form and (where supported by the
+database) query plans may be viewed as an aid to database performance tuning.
+
+SQLWork is the companion tool to Orasoft's Object Manager a graphical database
+navigation and administration tool. Both tools are released under the GNU
+General Public License.
+
+Commercial support for these tools is available from Advantio
+(www.advantio.com).
+

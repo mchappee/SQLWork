@@ -1,0 +1,681 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2022-01-12 07:08-0600\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=CHARSET\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: src/sqlworkwin.c:116
+msgid "SQLWork 5.0"
+msgstr ""
+
+#: src/sqlworkwin.c:134
+msgid "_File"
+msgstr ""
+
+#: src/sqlworkwin.c:152
+msgid "_Open"
+msgstr ""
+
+#: src/sqlworkwin.c:163
+msgid "_Save"
+msgstr ""
+
+#: src/sqlworkwin.c:174
+msgid "Save _As"
+msgstr ""
+
+#: src/sqlworkwin.c:191
+msgid "Add Connection"
+msgstr ""
+
+#: src/sqlworkwin.c:198
+msgid "Save Connecion"
+msgstr ""
+
+#: src/sqlworkwin.c:205
+msgid "Close Connection"
+msgstr ""
+
+#: src/sqlworkwin.c:222
+msgid "_Exit"
+msgstr ""
+
+#: src/sqlworkwin.c:233
+msgid "_Edit"
+msgstr ""
+
+#: src/sqlworkwin.c:251
+msgid "C_ut"
+msgstr ""
+
+#: src/sqlworkwin.c:262
+msgid "_Copy"
+msgstr ""
+
+#: src/sqlworkwin.c:273
+msgid "_Paste"
+msgstr ""
+
+#: src/sqlworkwin.c:284
+msgid "_Select All"
+msgstr ""
+
+#: src/sqlworkwin.c:295
+msgid "C_lear"
+msgstr ""
+
+#: src/sqlworkwin.c:306
+msgid "_Settings"
+msgstr ""
+
+#: src/sqlworkwin.c:324
+msgid "_Preferences..."
+msgstr ""
+
+#: src/sqlworkwin.c:333
+msgid "Bookmarks"
+msgstr ""
+
+#: src/sqlworkwin.c:349
+msgid "_Add"
+msgstr ""
+
+#: src/sqlworkwin.c:360
+msgid "Add _To"
+msgstr ""
+
+#: src/sqlworkwin.c:371
+msgid "_Insert"
+msgstr ""
+
+#: src/sqlworkwin.c:382
+msgid "_Run"
+msgstr ""
+
+#: src/sqlworkwin.c:393
+msgid "_Organise"
+msgstr ""
+
+#: src/sqlworkwin.c:404
+msgid "_Help"
+msgstr ""
+
+#: src/sqlworkwin.c:423
+msgid "_About"
+msgstr ""
+
+#: src/sqlworkwin.c:449
+msgid "New"
+msgstr ""
+
+#: src/sqlworkwin.c:450
+msgid "Start a new query"
+msgstr ""
+
+#: src/sqlworkwin.c:461
+msgid "Open"
+msgstr ""
+
+#: src/sqlworkwin.c:462
+msgid "Read qiuery from file"
+msgstr ""
+
+#: src/sqlworkwin.c:473
+msgid "Save"
+msgstr ""
+
+#: src/sqlworkwin.c:474
+msgid "Save query to file"
+msgstr ""
+
+#: src/sqlworkwin.c:485 src/sqlworkwin.c:3039
+msgid "Print"
+msgstr ""
+
+#: src/sqlworkwin.c:486
+msgid "Send a copy of the query to the printer"
+msgstr ""
+
+#: src/sqlworkwin.c:505
+msgid "Execute"
+msgstr ""
+
+#: src/sqlworkwin.c:506
+msgid "Run the current query"
+msgstr ""
+
+#: src/sqlworkwin.c:517
+msgid "Stop"
+msgstr ""
+
+#: src/sqlworkwin.c:518
+msgid "Stop a long running query"
+msgstr ""
+
+#: src/sqlworkwin.c:538
+msgid "Print Output"
+msgstr ""
+
+#: src/sqlworkwin.c:539
+msgid "Print the results of the query"
+msgstr ""
+
+#: src/sqlworkwin.c:551 src/sqlworkwin.c:1484
+msgid "Export"
+msgstr ""
+
+#: src/sqlworkwin.c:552
+msgid "Save the results of the query to a file"
+msgstr ""
+
+#: src/sqlworkwin.c:769
+msgid "SQLWork 5.0 Login"
+msgstr ""
+
+#: src/sqlworkwin.c:830
+msgid "Selet the database type you wish to connect to"
+msgstr ""
+
+#: src/sqlworkwin.c:865 src/sqlworkwin.c:988
+msgid "Username"
+msgstr ""
+
+#: src/sqlworkwin.c:901 src/sqlworkwin.c:1024
+msgid "Password"
+msgstr ""
+
+#: src/sqlworkwin.c:938
+msgid "TNS Name"
+msgstr ""
+
+#: src/sqlworkwin.c:974
+msgid "label23"
+msgstr ""
+
+#: src/sqlworkwin.c:1061
+msgid "Host Name"
+msgstr ""
+
+#: src/sqlworkwin.c:1097 src/sqlworkwin.c:1845
+msgid "Database"
+msgstr ""
+
+#: src/sqlworkwin.c:1139
+msgid "label24"
+msgstr ""
+
+#: src/sqlworkwin.c:1154
+msgid "Login"
+msgstr ""
+
+#: src/sqlworkwin.c:1162 src/sqlworkwin.c:2063 src/sqlworkwin.c:2179
+#: src/sqlworkwin.c:2377 src/sqlworkwin.c:2414 src/sqlworkwin.c:2652
+#: src/sqlworkwin.c:2795 src/sqlworkwin.c:2898 src/sqlworkwin.c:3047
+msgid "Cancel"
+msgstr ""
+
+#: src/sqlworkwin.c:1261 src/sqlworkwin.c:1618
+msgid "Text View"
+msgstr ""
+
+#: src/sqlworkwin.c:1276 src/sqlworkwin.c:1695
+msgid "Grid View"
+msgstr ""
+
+#: src/sqlworkwin.c:1291
+msgid "Query Plan"
+msgstr ""
+
+#: src/sqlworkwin.c:1416
+msgid "SQLWork 5.0 Preferences"
+msgstr ""
+
+#: src/sqlworkwin.c:1437
+msgid "Toolbar"
+msgstr ""
+
+#: src/sqlworkwin.c:1451
+msgid "Hide"
+msgstr ""
+
+#: src/sqlworkwin.c:1459 src/sqlworkwin.c:1793
+msgid "Icons"
+msgstr ""
+
+#: src/sqlworkwin.c:1467 src/sqlworkwin.c:3002
+msgid "Text"
+msgstr ""
+
+#: src/sqlworkwin.c:1475
+msgid "Both"
+msgstr ""
+
+#: src/sqlworkwin.c:1507
+msgid "Separator character for \"export delimited\""
+msgstr ""
+
+#: src/sqlworkwin.c:1508
+msgid "|"
+msgstr ""
+
+#: src/sqlworkwin.c:1510
+msgid "Separator character"
+msgstr ""
+
+#: src/sqlworkwin.c:1520
+msgid "Preferences"
+msgstr ""
+
+#: src/sqlworkwin.c:1534
+msgid "Save preferences on exit"
+msgstr ""
+
+#: src/sqlworkwin.c:1544
+msgid "General"
+msgstr ""
+
+#: src/sqlworkwin.c:1558 src/sqlworkwin.c:1604
+msgid "Query"
+msgstr ""
+
+#: src/sqlworkwin.c:1581
+msgid ""
+"The maximum number of rows returned from the database. 0 or \"Unlimited\" "
+"means return all the data"
+msgstr ""
+
+#: src/sqlworkwin.c:1582
+msgid "Unlimited"
+msgstr ""
+
+#: src/sqlworkwin.c:1584
+msgid "Commit work after each query"
+msgstr ""
+
+#: src/sqlworkwin.c:1594
+msgid "Max number of rows to return"
+msgstr ""
+
+#: src/sqlworkwin.c:1641
+msgid ""
+"The font which will be used for the text view. Monospaced fonts are best"
+msgstr ""
+
+#: src/sqlworkwin.c:1644 src/sqlworkwin.c:1757 src/sqlworkwin.c:1766
+msgid "Select"
+msgstr ""
+
+#: src/sqlworkwin.c:1665
+msgid "Font"
+msgstr ""
+
+#: src/sqlworkwin.c:1675 src/sqlworkwin.c:1720
+msgid "Dynamically Update"
+msgstr ""
+
+#: src/sqlworkwin.c:1685
+msgid "Max column width"
+msgstr ""
+
+#: src/sqlworkwin.c:1710
+msgid "Auto Size Columns"
+msgstr ""
+
+#: src/sqlworkwin.c:1729
+msgid "Data Views"
+msgstr ""
+
+#: src/sqlworkwin.c:1743 src/sqlworkwin.c:1813
+msgid "Paths"
+msgstr ""
+
+#: src/sqlworkwin.c:1803
+msgid "BookMarks"
+msgstr ""
+
+#: src/sqlworkwin.c:1840
+msgid "List of connections which will be made when SQLWork starts"
+msgstr ""
+
+#: src/sqlworkwin.c:1852
+msgid "Connection String"
+msgstr ""
+
+#: src/sqlworkwin.c:1868
+msgid "Add"
+msgstr ""
+
+#: src/sqlworkwin.c:1876 src/sqlworkwin.c:2504
+msgid "Edit"
+msgstr ""
+
+#: src/sqlworkwin.c:1884
+msgid "Remove"
+msgstr ""
+
+#: src/sqlworkwin.c:1892
+msgid "Connections"
+msgstr ""
+
+#: src/sqlworkwin.c:1913
+msgid "Paper Size:"
+msgstr ""
+
+#: src/sqlworkwin.c:1927
+msgid "11x17"
+msgstr ""
+
+#: src/sqlworkwin.c:1928
+msgid "a0"
+msgstr ""
+
+#: src/sqlworkwin.c:1929
+msgid "a1"
+msgstr ""
+
+#: src/sqlworkwin.c:1930
+msgid "a2"
+msgstr ""
+
+#: src/sqlworkwin.c:1931
+msgid "a3"
+msgstr ""
+
+#: src/sqlworkwin.c:1932 src/sqlworkwin.c:1961
+msgid "a4"
+msgstr ""
+
+#: src/sqlworkwin.c:1933
+msgid "a5"
+msgstr ""
+
+#: src/sqlworkwin.c:1934
+msgid "archA"
+msgstr ""
+
+#: src/sqlworkwin.c:1935
+msgid "archB"
+msgstr ""
+
+#: src/sqlworkwin.c:1936
+msgid "archC"
+msgstr ""
+
+#: src/sqlworkwin.c:1937
+msgid "archD"
+msgstr ""
+
+#: src/sqlworkwin.c:1938
+msgid "archE"
+msgstr ""
+
+#: src/sqlworkwin.c:1939
+msgid "b0"
+msgstr ""
+
+#: src/sqlworkwin.c:1940
+msgid "b1"
+msgstr ""
+
+#: src/sqlworkwin.c:1941
+msgid "b2"
+msgstr ""
+
+#: src/sqlworkwin.c:1942
+msgid "b3"
+msgstr ""
+
+#: src/sqlworkwin.c:1943
+msgid "b4"
+msgstr ""
+
+#: src/sqlworkwin.c:1944
+msgid "b5"
+msgstr ""
+
+#: src/sqlworkwin.c:1945
+msgid "executive"
+msgstr ""
+
+#: src/sqlworkwin.c:1946
+msgid "flsa"
+msgstr ""
+
+#: src/sqlworkwin.c:1947
+msgid "flse"
+msgstr ""
+
+#: src/sqlworkwin.c:1948
+msgid "halfletter"
+msgstr ""
+
+#: src/sqlworkwin.c:1949
+msgid "ledger"
+msgstr ""
+
+#: src/sqlworkwin.c:1950
+msgid "legal"
+msgstr ""
+
+#: src/sqlworkwin.c:1951
+msgid "letter"
+msgstr ""
+
+#: src/sqlworkwin.c:1952
+msgid "note"
+msgstr ""
+
+#: src/sqlworkwin.c:1970
+msgid "Default Font:"
+msgstr ""
+
+#: src/sqlworkwin.c:1983 src/sqlworkwin.c:1994
+msgid "Helvetica"
+msgstr ""
+
+#: src/sqlworkwin.c:1984
+msgid "Times Roman"
+msgstr ""
+
+#: src/sqlworkwin.c:1985
+msgid "Courier"
+msgstr ""
+
+#: src/sqlworkwin.c:1996
+msgid "Size"
+msgstr ""
+
+#: src/sqlworkwin.c:2010
+msgid "8pt"
+msgstr ""
+
+#: src/sqlworkwin.c:2011
+msgid "9pt"
+msgstr ""
+
+#: src/sqlworkwin.c:2012
+msgid "10pt"
+msgstr ""
+
+#: src/sqlworkwin.c:2013
+msgid "11pt"
+msgstr ""
+
+#: src/sqlworkwin.c:2014 src/sqlworkwin.c:2026
+msgid "12pt"
+msgstr ""
+
+#: src/sqlworkwin.c:2015
+msgid "14pt"
+msgstr ""
+
+#: src/sqlworkwin.c:2016
+msgid "16pt"
+msgstr ""
+
+#: src/sqlworkwin.c:2017
+msgid "18pt"
+msgstr ""
+
+#: src/sqlworkwin.c:2028 src/sqlworkwin.c:3019
+msgid "Postscript"
+msgstr ""
+
+#: src/sqlworkwin.c:2047 src/sqlworkwin.c:2173 src/sqlworkwin.c:2348
+#: src/sqlworkwin.c:2371 src/sqlworkwin.c:2408 src/sqlworkwin.c:2644
+#: src/sqlworkwin.c:2787 src/sqlworkwin.c:2890
+msgid "OK"
+msgstr ""
+
+#: src/sqlworkwin.c:2055
+msgid "Apply"
+msgstr ""
+
+#: src/sqlworkwin.c:2115
+msgid "Select Font"
+msgstr ""
+
+#: src/sqlworkwin.c:2168 src/sqlworkwin.c:2366
+msgid "Select File"
+msgstr ""
+
+#: src/sqlworkwin.c:2194 src/sqlworkwin.c:2988
+msgid "Format"
+msgstr ""
+
+#: src/sqlworkwin.c:2216
+msgid "sql"
+msgstr ""
+
+#: src/sqlworkwin.c:2224
+msgid "text"
+msgstr ""
+
+#: src/sqlworkwin.c:2232
+msgid "html"
+msgstr ""
+
+#: src/sqlworkwin.c:2241
+msgid "csv"
+msgstr ""
+
+#: src/sqlworkwin.c:2249
+msgid "delimited"
+msgstr ""
+
+#: src/sqlworkwin.c:2264
+msgid "Table:"
+msgstr ""
+
+#: src/sqlworkwin.c:2281
+msgid "Create"
+msgstr ""
+
+#: src/sqlworkwin.c:2315
+msgid "About SQLWork"
+msgstr ""
+
+#: src/sqlworkwin.c:2399
+msgid "Select Directory"
+msgstr ""
+
+#: src/sqlworkwin.c:2446
+msgid "Organise Bookmarks"
+msgstr ""
+
+#: src/sqlworkwin.c:2473
+msgid "BookMark"
+msgstr ""
+
+#: src/sqlworkwin.c:2480 src/sqlworkwin.c:2614
+msgid "Description"
+msgstr ""
+
+#: src/sqlworkwin.c:2496
+msgid "New Folder"
+msgstr ""
+
+#: src/sqlworkwin.c:2512
+msgid "Delete"
+msgstr ""
+
+#: src/sqlworkwin.c:2520
+msgid "Done"
+msgstr ""
+
+#: src/sqlworkwin.c:2569
+msgid "Add Bookmark"
+msgstr ""
+
+#: src/sqlworkwin.c:2590 src/sqlworkwin.c:2717
+msgid "Name"
+msgstr ""
+
+#: src/sqlworkwin.c:2605
+msgid "The name of the new bookmark"
+msgstr ""
+
+#: src/sqlworkwin.c:2629
+msgid "One line description of the bookmark"
+msgstr ""
+
+#: src/sqlworkwin.c:2696
+msgid "Edit Bookmark"
+msgstr ""
+
+#: src/sqlworkwin.c:2741
+msgid "Desscription"
+msgstr ""
+
+#: src/sqlworkwin.c:2833
+msgid "Create Bookmarks Directory?"
+msgstr ""
+
+#: src/sqlworkwin.c:2861
+msgid ""
+"Bookmarks directory doesn't exist\n"
+"- Create?"
+msgstr ""
+
+#: src/sqlworkwin.c:2869
+msgid "Also create folder for each database type"
+msgstr ""
+
+#: src/sqlworkwin.c:2942
+msgid "Print Results"
+msgstr ""
+
+#: src/sqlworkwin.c:2970
+msgid "Print Command"
+msgstr ""
+
+#: src/sqlworkwin.c:2986
+msgid "lpr"
+msgstr ""
+
+#: src/sqlworkwin.c:3011
+msgid "Html"
+msgstr ""
+
+#: src/support.c:121
+#, c-format
+msgid "Couldn't find pixmap file: %s"
+msgstr ""
+
+#: src/support.c:130
+#, c-format
+msgid "Error loading pixmap file: %s"
+msgstr ""

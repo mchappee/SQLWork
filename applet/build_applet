@@ -1,0 +1,8 @@
+gcc -c applet.c `gtk-config --cflags` `gnome-config --cflags applets`
+gcc -o sqlwork_applet applet.o ../src/prefs.o ../src/miscfunc.o ../src/errors.o ../src/vmsgfmt.o \
+../src/support.o `gtk-config --libs --cflags` `gnome-config --libs applets --cflags applets`
+strip sqlwork_applet
+install sqlwork_applet.gnorba `gnome-config --sysconfdir`/CORBA/servers/sqlwork_applet.gnorba
+install sqlwork_applet.desktop `gnome-config --prefix`/share/applets/Utility/sqlwork_applet.desktop
+install sqlwork_applet `gnome-config --bindir`/sqlwork_applet
+

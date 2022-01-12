@@ -1,0 +1,4 @@
+     ../src/main.c \
+     ../src/sqlworkwin.c \
+     ../src/sqlworksig.c \
+     ../src/support.c

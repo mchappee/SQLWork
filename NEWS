@@ -1,0 +1,20 @@
+Noteworthy changes since SQLWork 3.0
+====================================
+
+Multiple connections are now supported, each with its own work area.
+
+Support for multiple databases has been added. In this release SQLWork now
+supports mySQL databases as well as Oracle.
+
+Access to often used queries is available via a "bookmarks" mechanism.
+
+Any number of connections may be remembered and automatically opened when
+SQLWork is started
+
+Query plans may be displayed.
+
+Query results may be sorted by any column
+
+SQL Scripts are supported.
+
+

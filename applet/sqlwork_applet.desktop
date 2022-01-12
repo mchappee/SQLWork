@@ -1,0 +1,7 @@
+[Desktop Entry]
+Name=SqlWork_Applet
+Comment=SQLWork Applet
+Exec=sqlwork_applet --activate-goad-server=sqlwork_applet
+Icon=gnome-mnemonic.png
+Terminal=0
+Type=Application

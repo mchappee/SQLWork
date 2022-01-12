@@ -1,0 +1,59 @@
+Some of these are now done, or partly done.
+
+Fill out the rest of the holes in functionality (there aren't too many now,
+apart from the bookmarks stuff I think that the main one is printing).
+(mostly done, postscript printing is the main missing feature)
+
+Make export work for mySQL (the type codes are the old Oracle ones so the
+export code won't know when to quote strings etc.)
+(done altough the translation of Oracle types to generic column type
+codes isn't complete)
+
+Finish the mySQL statement scanner so it understands comments, strings
+and quoted identifiers.
+(done)
+
+Finish the Oracle statement scanner so it understands blocks started
+by declare/begin, create procedure, create package etc.
+(done)
+
+Add support for bind variables for the Oracle back end.  Consider
+whether we can use the server side variables in mySQL to mimic bind
+variables.
+
+Add support for substitution variables for both Oracle and mySQL.
+
+Look at using GtkEditor for syntax highlighting for the main text
+widget and the bookmark edit widget.
+
+Rearrange error handling so that the text of the error message can be
+included in the text output.
+
+Support at least "whenever sqlerror ..." from sqlplus (possibly
+support this for mySQL without the rollback options) probably with at
+least a "prompt the user" extension.
+
+Change the default behaviour on errors in scripts to be to offer to
+continue on the dialog.
+
+Look at completion of sql command keywords (fairly easy). Possibly
+look at context sensitive completion of sql command keywords (fairly
+hard). Possibly then look at context sensitive completion of object
+names.
+
+Fix support for object types and longs in the Oracle back end.
+
+Support (or check) query plans for Oracle 7.3
+
+General tidy up of code
+
+Allow DBMS_DBMS_OUTPUT output to be viewed (possibly in a separate
+window).
+
+Write manual
+
+Sell 1,000,000 copies
+
+retire to the Bahamas
+
+
